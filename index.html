@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Rec Láser · Lista de precios</title>
-<meta name="description" content="Bases para tortas en MDF de Rec Láser, Villa María, Córdoba: formas, lista de precios, calculador y contacto.">
+<meta name="description" content="Bases para tortas en MDF de Rec Láser, Villa María, Córdoba: formas, lista de precios, mayoristas y pedidos por WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -97,9 +97,12 @@
   .forma-card:nth-child(3n+2) .img { background: var(--rojo-tinte); }
   .forma-card:nth-child(3n) .img { background: #f2f4f6; }
   .forma-card .img img { width: 100%; height: 100%; object-fit: cover; }
-  .forma-card .img svg { width: 52%; height: auto; }
-  .forma-card .img .silueta { fill: var(--azul); }
-  .forma-card:nth-child(3n+2) .img .silueta { fill: var(--rojo); }
+  .forma-card .img { position: relative; }
+  .forma-card .img svg { position: absolute; width: 50%; height: auto; }
+  .forma-card .img .negra { left: 12%; top: 14%; filter: drop-shadow(0 6px 8px rgba(20,30,45,.25)); }
+  .forma-card .img .blanca { right: 12%; bottom: 14%; filter: drop-shadow(0 8px 12px rgba(20,30,45,.22)); }
+  .forma-card .img .negra g { fill: #1d1f22; }
+  .forma-card .img .blanca g { fill: #ffffff; }
   .forma-card .txt { padding: 12px 14px 14px; }
   .forma-card b { display: block; color: var(--azul); font-size: 16px; }
   .forma-card span { font-size: 13px; color: var(--suave); }
@@ -148,35 +151,26 @@
   .regalo { align-self: flex-start; font-size: 13px; font-weight: 700; color: var(--rojo); background: var(--rojo-tinte); padding: 5px 10px; border-radius: 999px; }
   .combo .precio-combo { font-size: 28px; font-weight: 800; color: var(--azul); }
 
-  /* Calculador */
-  .calc { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 22px; }
-  .calc-form, .calc-res { border-radius: 20px; padding: 24px; }
-  .calc-form { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.16); }
+  /* Banner mayoristas */
+  .banner-may { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 34px; align-items: center; }
+  .banner-may h2 { margin-bottom: 12px; }
+  .banner-may p { color: #cfd8e1; font-size: 18px; margin: 0 0 18px; max-width: 620px; }
+  .may-chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+  .may-chips li { font-size: 14px; font-weight: 700; padding: 8px 14px; border-radius: 999px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); }
+  .may-cta { display: flex; flex-direction: column; gap: 14px; }
+  .may-niveles { display: flex; flex-direction: column; gap: 8px; }
+  .may-niveles div { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 12px; font-weight: 700; color: #fff; }
+  .may-niveles span { font-weight: 600; font-size: 15px; opacity: .9; }
+  .may-cta .btn { width: 100%; }
+
+  /* Campos del formulario */
   .campos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
   label.campo { display: flex; flex-direction: column; gap: 8px; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
-  .oscura label.campo { color: #cfd8e1; }
-  .campo select, .campo input, .campo textarea {
+  .campo input, .campo textarea {
     min-height: 54px; padding: 0 14px; border-radius: 12px; border: 2px solid var(--linea); background: #fff; color: var(--tinta);
     font: 600 17px Montserrat, sans-serif; text-transform: none; letter-spacing: 0; width: 100%; }
-  .campo textarea { padding: 14px; min-height: 120px; resize: vertical; }
-  .campo select:focus, .campo input:focus, .campo textarea:focus { outline: 3px solid rgba(192,57,43,.35); outline-offset: 1px; }
-  .colores-calc { display: flex; gap: 8px; }
-  .colores-calc button { flex: 1; min-height: 54px; border-radius: 12px; border: 2px solid transparent; font: 700 16px Montserrat, sans-serif; cursor: pointer; }
-  .colores-calc [data-color="blanco"] { background: #fff; color: var(--azul); }
-  .colores-calc [data-color="negro"] { background: #15181b; color: #fff; }
-  .colores-calc button[aria-pressed="true"] { border-color: #ff8f82; box-shadow: 0 0 0 3px rgba(255,143,130,.35); }
-  .cantidades { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
-  .cantidades button { min-height: 40px; padding: 0 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,.3); background: transparent; color: #fff; font: 700 14px Montserrat, sans-serif; cursor: pointer; }
-  .cantidades button:hover { background: rgba(255,255,255,.12); }
-  .calc-res { background: #fff; color: var(--tinta); display: flex; flex-direction: column; gap: 14px; }
-  .calc-res .etq { font-size: 14px; font-weight: 700; color: var(--rojo); text-transform: uppercase; letter-spacing: .1em; }
-  .calc-res .total { font-size: clamp(38px, 6vw, 52px); font-weight: 800; color: var(--azul); line-height: 1; }
-  .calc-res .prom { color: var(--suave); }
-  .desglose { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--linea); }
-  .desglose li { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--linea); font-size: 15px; }
-  .desglose li b { color: var(--azul); }
-  .aviso { background: var(--rojo-tinte); color: var(--rojo-osc); border-radius: 12px; padding: 12px 14px; font-size: 15px; font-weight: 600; }
-  .calc-res .btn { width: 100%; }
+  .campo textarea { padding: 14px; min-height: 140px; resize: vertical; line-height: 1.5; }
+  .campo input:focus, .campo textarea:focus { outline: 3px solid rgba(192,57,43,.3); outline-offset: 1px; border-color: var(--rojo); }
 
   /* Contacto */
   .contacto { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 32px; align-items: start; }
@@ -203,7 +197,7 @@
 
   @media (max-width: 960px) {
     .formas { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .fabrica, .calc, .contacto { grid-template-columns: 1fr; }
+    .fabrica, .banner-may, .contacto { grid-template-columns: 1fr; }
     .combos { grid-template-columns: 1fr; }
   }
   @media (max-width: 860px) {
@@ -242,8 +236,8 @@
       <a href="#formas">Formas</a>
       <a href="#fabrica">Fábrica</a>
       <a href="#precios">Precios</a>
-      <a href="#calculador">Calculador</a>
-      <a href="#contacto">Contacto</a>
+      <a href="#mayoristas">Mayoristas</a>
+      <a href="#pedido">Hacé tu pedido</a>
       <a class="btn btn-rojo btn-chico" id="btn-nav" target="_blank" rel="noopener"></a>
     </nav>
   </div>
@@ -253,10 +247,10 @@
   <div class="wrap">
     <div class="ojo"><span class="laser" aria-hidden="true"></span><span id="fecha">Lista de precios</span></div>
     <h1>Bases para tortas, <span>directo de fábrica.</span></h1>
-    <p>Cortadas a láser en MDF, en blanco o negro y con tu logo si querés. Mirá las formas, buscá tu medida y calculá cuánto salen tus bases.</p>
+    <p>Cortadas a láser en MDF, en blanco o negro y con tu logo si querés. Mirá las formas, buscá tu medida y pedinos tu presupuesto.</p>
     <div class="acciones">
       <a class="btn btn-rojo" href="#precios">Ver lista de precios</a>
-      <a class="btn btn-borde" href="#calculador">Calcular mi pedido</a>
+      <a class="btn btn-borde" href="#pedido">Hacé tu pedido</a>
     </div>
     <div class="datos">
       <div><b>10 a 45 cm</b>todas las medidas</div>
@@ -276,7 +270,7 @@
         <p>Todas las formas vienen en blanco o negro y en todas las medidas. Y tienen el mismo precio.</p>
       </div>
       <div class="formas" id="formas-grilla"></div>
-      <p class="nota-formas">¿Necesitás una forma especial o con tu logo? También la hacemos. <a href="#contacto"><b>Escribinos</b></a>.</p>
+      <p class="nota-formas">¿Necesitás una forma especial o con tu logo? También la hacemos. <a href="#pedido"><b>Escribinos</b></a>.</p>
     </div>
   </section>
 
@@ -292,7 +286,7 @@
         <div class="puntos">
           <div class="punto"><b>Apta alimentos</b><span>Madera certificada para uso alimentario.</span></div>
           <div class="punto"><b>Resistente</b><span>MDF de 3 mm que soporta hasta 10 kg.</span></div>
-          <div class="punto"><b>Con tu logo</b><span>Grabado láser. Antes de fabricar te mandamos la prueba.</span></div>
+          <div class="punto"><b>Con tu logo</b><span>Grabado láser en pedidos minoristas. Antes de fabricar te mandamos la prueba.</span></div>
           <div class="punto"><b>Envíos a todo el país</b><span>Por Andreani o Correo. El flete se calcula aparte.</span></div>
         </div>
       </div>
@@ -334,80 +328,46 @@
     </div>
   </section>
 
-  <!-- CALCULADOR -->
-  <section id="calculador" class="oscura">
-    <div class="wrap">
-      <div class="sec-tit">
-        <div class="ojo"><span class="laser" aria-hidden="true"></span>Calculador</div>
-        <h2>Calculá el valor aproximado de tus bases</h2>
-        <p>Elegí forma, color, medida y cantidad. El flete se paga aparte.</p>
+  <!-- MAYORISTAS -->
+  <section id="mayoristas" class="oscura">
+    <div class="wrap banner-may">
+      <div>
+        <div class="ojo"><span class="laser" aria-hidden="true"></span>Mayoristas</div>
+        <h2>Desde <span id="may-desde">200</span> bases, precio mayorista</h2>
+        <p>Elegí las formas, medidas y colores que quieras y combinalos como necesites: por ejemplo, 10 de cada medida hasta llegar a 200. Las bases mayoristas son lisas, sin logo.</p>
+        <ul class="may-chips">
+          <li>Formas combinadas</li>
+          <li>Medidas combinadas</li>
+          <li>Blanco o negro</li>
+          <li>Bases lisas, sin logo</li>
+        </ul>
       </div>
-      <div class="calc">
-        <div class="calc-form">
-          <div class="campos">
-            <label class="campo">Forma<select id="c-forma"></select></label>
-            <label class="campo">Medida<select id="c-medida"></select></label>
-            <div class="campo" style="grid-column:1/-1"><span style="font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#cfd8e1">Color</span>
-              <div class="colores-calc" id="c-color" role="group" aria-label="Color">
-                <button type="button" data-color="blanco" aria-pressed="true">Blanco</button>
-                <button type="button" data-color="negro" aria-pressed="false">Negro</button>
-              </div>
-            </div>
-            <label class="campo" style="grid-column:1/-1">Cantidad de bases
-              <input id="c-cant" type="number" min="1" step="1" value="50" inputmode="numeric">
-            </label>
-          </div>
-          <div class="cantidades" id="c-rapidas">
-            <button type="button" data-n="30">30</button>
-            <button type="button" data-n="50">50</button>
-            <button type="button" data-n="100">100</button>
-            <button type="button" data-n="200">200</button>
-            <button type="button" data-n="1000">1.000</button>
-          </div>
-        </div>
-        <div class="calc-res" aria-live="polite">
-          <span class="etq" id="r-etq">Valor aproximado</span>
-          <span class="total" id="r-total">$ —</span>
-          <span class="prom" id="r-prom"></span>
-          <ul class="desglose" id="r-desglose"></ul>
-          <div class="aviso">Es un valor aproximado. El flete se paga aparte y se calcula según tu código postal.</div>
-          <a class="btn btn-wa" id="r-wa" target="_blank" rel="noopener"></a>
-          <a class="btn btn-azul" href="#contacto" id="r-form">Pedir presupuesto por formulario</a>
-        </div>
+      <div class="may-cta">
+        <div class="may-niveles" id="may-niveles"></div>
+        <a class="btn btn-wa" id="btn-may" target="_blank" rel="noopener"></a>
       </div>
     </div>
   </section>
 
-  <!-- CONTACTO -->
-  <section id="contacto">
+  <!-- HACÉ TU PEDIDO -->
+  <section id="pedido">
     <div class="wrap">
       <div class="sec-tit">
-        <div class="ojo"><span class="laser" aria-hidden="true"></span>Contacto</div>
-        <h2>Escribinos y te armamos el presupuesto</h2>
-        <p>Dejanos tus datos y un vendedor te responde. Atendemos de lunes a viernes de 9 a 18 h.</p>
+        <div class="ojo"><span class="laser" aria-hidden="true"></span>Hacé tu pedido</div>
+        <h2>Contanos qué te gustaría llevar y te lo cotizamos</h2>
+        <p>Escribinos como te salga: formas, medidas, cantidades, si va con logo. Te respondemos por WhatsApp de lunes a viernes de 9 a 18 h. El flete se paga aparte.</p>
       </div>
       <div class="contacto">
         <div class="contacto-info" id="vias"></div>
         <form class="form" id="form" novalidate>
           <div class="campos">
-            <label class="campo">Nombre<input id="f-nombre" autocomplete="name" required></label>
-            <label class="campo">Ciudad<input id="f-ciudad" autocomplete="address-level2"></label>
-            <label class="campo">WhatsApp<input id="f-tel" type="tel" autocomplete="tel" inputmode="tel"></label>
-            <label class="campo">Mail<input id="f-mail" type="email" autocomplete="email"></label>
-            <label class="campo ancho">Tipo de consulta
-              <select id="f-tipo">
-                <option>Comprar bases</option>
-                <option>Precio mayorista</option>
-                <option>Bases con mi logo</option>
-                <option>Trabajo a medida</option>
-                <option>Otra consulta</option>
-              </select>
-            </label>
-            <label class="campo ancho">Mensaje<textarea id="f-msj" required placeholder="Contanos qué necesitás: forma, medida, cantidad…"></textarea></label>
+            <label class="campo">Tu nombre<input id="f-nombre" autocomplete="name" required></label>
+            <label class="campo">Tu ciudad<input id="f-ciudad" autocomplete="address-level2"></label>
+            <label class="campo ancho">¿Qué te gustaría llevar?<textarea id="f-msj" required placeholder="Ej: 30 bases redondas blancas de 25 cm y 20 cuadradas negras de 30 cm, con mi logo."></textarea></label>
           </div>
           <div class="error" id="f-error" role="alert"></div>
-          <button class="btn btn-rojo" type="submit">Enviar consulta por WhatsApp</button>
-          <p class="legal">Se abre WhatsApp con tu mensaje listo para enviar.</p>
+          <button class="btn btn-wa" type="submit" id="f-enviar"></button>
+          <p class="legal">Se abre WhatsApp con tu pedido listo para enviar.</p>
         </form>
       </div>
     </div>
@@ -480,7 +440,7 @@
       <article class="forma-card">
         <div class="img">${f.foto
           ? `<img src="${f.foto}" alt="Base ${f.nombre}" loading="lazy">`
-          : `<svg viewBox="0 0 100 100" aria-hidden="true"><g class="silueta">${SILUETAS[f.id] || SILUETAS.redonda}</g></svg>`}</div>
+          : `<svg class="negra" viewBox="0 0 100 100" aria-hidden="true"><g>${SILUETAS[f.id] || SILUETAS.redonda}</g></svg><svg class="blanca" viewBox="0 0 100 100" aria-hidden="true"><g>${SILUETAS[f.id] || SILUETAS.redonda}</g></svg>`}</div>
         <div class="txt"><b>${f.nombre}</b><span>Blanco o negro · 10 a 45 cm</span></div>
       </article>`).join('');
   }
@@ -495,7 +455,7 @@
     if (may) {
       $('thead').innerHTML = '<th>Medida</th>' + cfg.niveles.map(nv => `<th class="num nivel-${nv.id}">${nv.nombre} · unitario<br><small style="font-weight:600;text-transform:none;letter-spacing:0">${nv.rango}</small></th>`).join('');
       $('tbody').innerHTML = filas.map(m => `<tr><td><b>${m.cm} cm</b></td>${cfg.niveles.map(nv => celda(m[nv.id], 1)).join('')}</tr>`).join('');
-      $('bajo-tabla').textContent = `Todos los precios son unitarios (por base), desde ${cfg.mayorista_desde} bases. El nivel depende de la cantidad total del pedido.`;
+      $('bajo-tabla').textContent = `Precios unitarios (por base), desde ${cfg.mayorista_desde} bases lisas, sin logo. Podés combinar formas, medidas y colores: el nivel depende de la cantidad total del pedido.`;
       $('niveles-info').innerHTML = cfg.niveles.map(nv => `<span style="background:${COLOR_NIVEL[nv.id]}">${nv.nombre}: ${nv.rango}</span>`).join('');
     } else {
       $('thead').innerHTML = '<th>Medida</th>' + MIN.map(([, col]) => `<th class="num">${col}</th>`).join('');
@@ -522,59 +482,13 @@
       </article>`).join('');
   }
 
-  /* ---------- Calculador ---------- */
-  function nivelPorCantidad(n) {
-    if (n >= 3000) return 'oro';
-    if (n >= 1000) return 'plata';
-    if (n >= cfg.mayorista_desde) return 'bronce';
-    return null;
-  }
-  function calcular() {
-    const m = porCm[estado.cm], n = Math.max(1, Math.floor(estado.cant || 0));
-    const forma = cfg.formas.find(f => f.id === estado.forma);
-    const nivel = nivelPorCantidad(n);
-    let total = 0, lineas = [], etq;
-
-    if (nivel && m[nivel]) {
-      const nv = cfg.niveles.find(x => x.id === nivel);
-      total = m[nivel] * n;
-      etq = `Precio mayorista · nivel ${nv.nombre}`;
-      lineas.push([`${miles(n)} bases × ${pesos(m[nivel])} unitario`, pesos(total)]);
-    } else {
-      // Minorista: arma con packs (100, 50, 30) y el resto por unidad, y se queda con lo más barato.
-      let resto = n;
-      for (const [k, , tam] of [...MIN].reverse()) {
-        if (tam === 1 || !m[k]) continue;
-        const veces = Math.floor(resto / tam);
-        if (veces && m[k] / tam < m.unidad) { lineas.push([`${veces} pack${veces > 1 ? 's' : ''} x${tam}`, pesos(m[k] * veces)]); total += m[k] * veces; resto -= veces * tam; }
-      }
-      if (resto) { lineas.push([`${resto} base${resto > 1 ? 's' : ''} sueltas × ${pesos(m.unidad)} unitario`, pesos(m.unidad * resto)]); total += m.unidad * resto; }
-      etq = 'Precio minorista';
-      if (n < cfg.mayorista_desde && n >= cfg.mayorista_desde * 0.75) etq += ` · con ${cfg.mayorista_desde} bases ya es mayorista`;
-    }
-
-    $('r-etq').textContent = etq;
-    $('r-total').textContent = pesos(total);
-    $('r-prom').textContent = `${miles(n)} bases ${forma.nombre.toLowerCase()} ${estado.color} de ${estado.cm} cm · precio unitario promedio ${pesos(total / n)}`;
-    $('r-desglose').innerHTML = lineas.map(([a, b]) => `<li><span>${a}</span><b>${b}</b></li>`).join('');
-    const resumen = `${miles(n)} bases ${forma.nombre.toLowerCase()}, color ${estado.color}, de ${estado.cm} cm (aprox. ${pesos(total)})`;
-    botonWa($('r-wa'), 'Pedir este presupuesto', `Hola! Calculé en la web: ${resumen}. ¿Me pasan el presupuesto con el envío?`);
-    $('r-form').dataset.resumen = resumen;
-    document.querySelectorAll('#c-color button').forEach(b => b.setAttribute('aria-pressed', b.dataset.color === estado.color));
-  }
-  function armarCalculador() {
-    $('c-forma').innerHTML = cfg.formas.map(f => `<option value="${f.id}">${f.nombre}</option>`).join('');
-    $('c-medida').innerHTML = datos.medidas.map(m => `<option value="${m.cm}" ${m.cm === estado.cm ? 'selected' : ''}>${m.cm} cm</option>`).join('');
-    $('c-forma').addEventListener('change', e => { estado.forma = e.target.value; calcular(); });
-    $('c-medida').addEventListener('change', e => { estado.cm = +e.target.value; calcular(); });
-    $('c-cant').addEventListener('input', e => { estado.cant = +e.target.value; calcular(); });
-    $('c-color').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { estado.color = b.dataset.color; calcular(); } });
-    $('c-rapidas').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { estado.cant = +b.dataset.n; $('c-cant').value = estado.cant; calcular(); } });
-    $('r-form').addEventListener('click', () => {
-      $('f-tipo').value = nivelPorCantidad(estado.cant) ? 'Precio mayorista' : 'Comprar bases';
-      $('f-msj').value = `Quiero presupuesto por ${$('r-form').dataset.resumen}.`;
-    });
-    calcular();
+  /* ---------- Mayoristas ---------- */
+  function armarMayoristas() {
+    $('may-desde').textContent = cfg.mayorista_desde;
+    $('may-niveles').innerHTML = cfg.niveles.map(nv =>
+      `<div style="background:${COLOR_NIVEL[nv.id]}">${nv.nombre}<span>${nv.rango}</span></div>`).join('');
+    botonWa($('btn-may'), 'Pedir precio mayorista',
+      `Hola! Quiero precio mayorista. Necesito ${cfg.mayorista_desde} bases o más (lisas, sin logo).`);
   }
 
   /* ---------- Contacto ---------- */
@@ -586,15 +500,15 @@
     $('vias').innerHTML = vias.join('');
 
     // Por ahora el formulario arma el mensaje y abre WhatsApp. Más adelante se conecta al formulario de GHL.
+    botonWa($('f-enviar'), 'Enviar mi pedido por WhatsApp', '');
+    $('f-enviar').removeAttribute('href');
     $('form').addEventListener('submit', e => {
       e.preventDefault();
       const v = id => $(id).value.trim();
-      if (!v('f-nombre') || !v('f-msj')) { $('f-error').textContent = 'Completá tu nombre y el mensaje.'; return; }
+      if (!v('f-nombre') || !v('f-msj')) { $('f-error').textContent = 'Completá tu nombre y qué te gustaría llevar.'; return; }
       $('f-error').textContent = '';
-      const lineas = [`Hola! Soy ${v('f-nombre')}${v('f-ciudad') ? ', de ' + v('f-ciudad') : ''}.`, `Consulta: ${v('f-tipo')}.`, v('f-msj')];
-      if (v('f-mail')) lineas.push(`Mi mail: ${v('f-mail')}`);
-      if (v('f-tel')) lineas.push(`Mi WhatsApp: ${v('f-tel')}`);
-      window.open(urlWa(lineas.join('\n')), '_blank', 'noopener');
+      const msj = `Hola! Soy ${v('f-nombre')}${v('f-ciudad') ? ', de ' + v('f-ciudad') : ''}. Me gustaría llevar: ${v('f-msj')}`;
+      window.open(urlWa(msj), '_blank', 'noopener');
     });
   }
 
@@ -610,7 +524,7 @@
     const obs = new IntersectionObserver(entradas => {
       entradas.forEach(en => { if (en.isIntersecting) links.forEach(a => a.classList.toggle('activo', a.getAttribute('href') === '#' + en.target.id)); });
     }, { rootMargin: '-45% 0px -50% 0px' });
-    ['formas', 'fabrica', 'precios', 'calculador', 'contacto'].forEach(id => obs.observe($(id)));
+    ['formas', 'fabrica', 'precios', 'mayoristas', 'pedido'].forEach(id => obs.observe($(id)));
   }
 
   function armar() {
@@ -624,7 +538,7 @@
     botonWa($('btn-nav'), 'WhatsApp', 'Hola! Quiero hacer una consulta.');
     botonWa($('btn-flot'), 'Consultar por WhatsApp', 'Hola! Quiero hacer una consulta sobre las bases.');
 
-    armarMenu(); armarFormas(); armarCombos(); armarCalculador(); armarContacto();
+    armarMenu(); armarFormas(); armarCombos(); armarMayoristas(); armarContacto();
     $('buscar').addEventListener('input', e => { estado.busca = e.target.value; pintarLista(); });
     $('tipo-lista').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { estado.tipo = b.dataset.t; pintarLista(); } });
     pintarLista();
