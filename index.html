@@ -59,50 +59,51 @@
   .btn-azul { background: var(--azul); color: #fff; } .btn-azul:hover { background: var(--azul-osc); }
   .btn-blanco { background: #fff; color: var(--azul); } .btn-blanco:hover { background: var(--azul-tinte); }
   .btn-borde { background: transparent; color: #fff; box-shadow: inset 0 0 0 2px rgba(255,255,255,.7); } .btn-borde:hover { background: rgba(255,255,255,.1); }
+  .btn-borde-azul { background: #fff; color: var(--azul); box-shadow: inset 0 0 0 2px var(--azul); } .btn-borde-azul:hover { background: var(--azul-tinte); }
   .btn-wa { background: #25d366; color: #0b2e17; } .btn-wa:hover { background: #1fbe5b; }
   .btn-chico { min-height: 44px; padding: 0 16px; font-size: 15px; }
 
   /* Portada */
-  .portada { background: var(--azul); color: #fff; position: relative; overflow: hidden; }
+  .portada { background: linear-gradient(180deg, #ffffff 0%, #f4f6f8 100%); color: var(--azul); position: relative; overflow: hidden; border-bottom: 1px solid var(--linea); }
   .portada::before { content: ""; position: absolute; right: -40px; top: 0; bottom: 0; width: 46%;
-    background: repeating-linear-gradient(180deg, rgba(192,57,43,.9) 0 3px, transparent 3px 11px);
+    background: repeating-linear-gradient(180deg, rgba(192,57,43,.55) 0 3px, transparent 3px 11px);
     -webkit-mask: linear-gradient(270deg, #000 10%, transparent 90%); mask: linear-gradient(270deg, #000 10%, transparent 90%); }
   .portada .wrap { position: relative; padding-top: 64px; padding-bottom: 68px; }
   .ojo { display: flex; align-items: center; gap: 12px; color: var(--rojo); font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: .14em; margin-bottom: 12px; }
-  .portada .ojo { color: #ff8f82; }
+  .portada .ojo { color: var(--rojo); }
   h1 { font-size: clamp(36px, 6.2vw, 64px); line-height: 1.03; font-weight: 800; margin: 0 0 18px; letter-spacing: -.02em; max-width: 760px; }
-  h1 span { color: #ff8f82; }
-  .portada p { color: #cfd8e1; font-size: 19px; margin: 0 0 26px; max-width: 560px; }
+  h1 span { color: var(--rojo); }
+  .portada p { color: var(--suave); font-size: 19px; margin: 0 0 26px; max-width: 560px; }
   .acciones { display: flex; gap: 12px; flex-wrap: wrap; }
   .datos { display: flex; gap: 34px; flex-wrap: wrap; margin-top: 40px; }
-  .datos div { font-size: 14px; color: #cfd8e1; }
-  .datos b { display: block; font-size: 30px; font-weight: 800; color: #fff; line-height: 1.1; }
+  .datos div { font-size: 14px; color: var(--suave); }
+  .datos b { display: block; font-size: 30px; font-weight: 800; color: var(--azul); line-height: 1.1; }
 
   /* Secciones */
   section { padding: 64px 0; }
   .sec-tit { margin-bottom: 26px; }
   h2 { font-size: clamp(28px, 4.2vw, 40px); line-height: 1.1; margin: 0; color: var(--azul); font-weight: 800; letter-spacing: -.01em; }
   .sec-tit p { margin: 10px 0 0; color: var(--suave); max-width: 640px; font-size: 18px; }
-  .oscura { background: var(--azul); color: #fff; }
-  .oscura h2 { color: #fff; } .oscura .sec-tit p { color: #cfd8e1; } .oscura .ojo { color: #ff8f82; }
-  .roja { background: var(--rojo); color: #fff; }
-  .roja h2 { color: #fff; } .roja .sec-tit p { color: #fbe3df; } .roja .ojo { color: #fff; }
+  .oscura { background: var(--azul-tinte); color: var(--tinta); }
+  .roja { background: var(--rojo-tinte); color: var(--tinta); }
   .clara { background: var(--blanco); }
 
   /* Formas */
   .formas { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
   .forma-card { background: var(--blanco); border: 1px solid var(--linea); border-radius: var(--radio); overflow: hidden; box-shadow: var(--sombra); transition: transform .15s, box-shadow .15s; }
   .forma-card:hover { transform: translateY(-3px); box-shadow: 0 16px 34px rgba(20,30,45,.12); }
-  .forma-card .img { aspect-ratio: 1; display: grid; place-items: center; background: var(--azul-tinte); }
-  .forma-card:nth-child(3n+2) .img { background: var(--rojo-tinte); }
-  .forma-card:nth-child(3n) .img { background: #f2f4f6; }
+  .forma-card .img { aspect-ratio: 1; display: grid; place-items: center; background: #f2f4f6; }
   .forma-card .img img { width: 100%; height: 100%; object-fit: cover; }
-  .forma-card .img { position: relative; }
-  .forma-card .img svg { position: absolute; width: 50%; height: auto; }
-  .forma-card .img .negra { left: 12%; top: 14%; filter: drop-shadow(0 6px 8px rgba(20,30,45,.25)); }
-  .forma-card .img .blanca { right: 12%; bottom: 14%; filter: drop-shadow(0 8px 12px rgba(20,30,45,.22)); }
-  .forma-card .img .negra g { fill: #1d1f22; }
-  .forma-card .img .blanca g { fill: #ffffff; }
+  .forma-card .img svg { width: 58%; height: auto; filter: drop-shadow(0 10px 14px rgba(20,30,45,.18)); transition: transform .2s; }
+  .forma-card .img g { transition: fill .2s; }
+  .forma-card[data-color="blanco"] .img g { fill: #ffffff; }
+  .forma-card[data-color="negro"] .img g { fill: #1d1f22; }
+  .forma-card:hover .img svg { transform: scale(1.04); }
+  .bolitas { display: flex; gap: 8px; margin-top: 8px; }
+  .bolita { width: 26px; height: 26px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 1px #c5ccd4; cursor: pointer; padding: 0; }
+  .bolita[data-c="blanco"] { background: #fff; }
+  .bolita[data-c="negro"] { background: #1d1f22; }
+  .bolita[aria-pressed="true"] { box-shadow: 0 0 0 2px var(--rojo); }
   .forma-card .txt { padding: 12px 14px 14px; }
   .forma-card b { display: block; color: var(--azul); font-size: 16px; }
   .forma-card span { font-size: 13px; color: var(--suave); }
@@ -110,11 +111,11 @@
 
   /* Fábrica */
   .fabrica { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: center; }
-  .fabrica .foto img { width: 100%; aspect-ratio: 4 / 3.4; object-fit: cover; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,.25); }
+  .fabrica .foto img { width: 100%; aspect-ratio: 4 / 3.4; object-fit: cover; border-radius: 20px; box-shadow: var(--sombra); }
   .puntos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 8px; }
-  .punto { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22); border-radius: 14px; padding: 16px; }
-  .punto b { display: block; font-size: 17px; margin-bottom: 2px; }
-  .punto span { font-size: 15px; color: #fbe3df; }
+  .punto { background: #fff; border: 1px solid #f1d3ce; border-radius: 14px; padding: 16px; box-shadow: var(--sombra); }
+  .punto b { display: block; font-size: 17px; margin-bottom: 2px; color: var(--rojo); }
+  .punto span { font-size: 15px; color: var(--suave); }
 
   /* Lista de precios */
   .herramientas { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-bottom: 16px; }
@@ -154,9 +155,9 @@
   /* Banner mayoristas */
   .banner-may { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 34px; align-items: center; }
   .banner-may h2 { margin-bottom: 12px; }
-  .banner-may p { color: #cfd8e1; font-size: 18px; margin: 0 0 18px; max-width: 620px; }
+  .banner-may p { color: var(--suave); font-size: 18px; margin: 0 0 18px; max-width: 620px; }
   .may-chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
-  .may-chips li { font-size: 14px; font-weight: 700; padding: 8px 14px; border-radius: 999px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); }
+  .may-chips li { font-size: 14px; font-weight: 700; padding: 8px 14px; border-radius: 999px; background: #fff; border: 1px solid var(--linea); color: var(--azul); }
   .may-cta { display: flex; flex-direction: column; gap: 14px; }
   .may-niveles { display: flex; flex-direction: column; gap: 8px; }
   .may-niveles div { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 12px; font-weight: 700; color: #fff; }
@@ -187,11 +188,11 @@
   .form .legal { margin: 12px 0 0; font-size: 13px; color: var(--suave); text-align: center; }
   .error { color: var(--rojo); font-size: 14px; font-weight: 600; min-height: 20px; margin: 4px 0 8px; }
 
-  footer { background: var(--azul-osc); color: #cfd8e1; padding: 34px 0 110px; font-size: 15px; }
+  footer { background: #fff; border-top: 1px solid var(--linea); color: var(--suave); padding: 34px 0 110px; font-size: 15px; }
   footer .wrap { display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
-  footer .logo-pie { background: #fff; border-radius: 10px; padding: 6px 10px; }
+  footer .logo-pie { display: inline-block; }
   footer .logo-pie img { height: 36px; width: auto; }
-  .aviso-mock { color: #ff8f82; font-weight: 700; }
+  .aviso-mock { color: var(--rojo); font-weight: 700; }
 
   .flotante { position: fixed; right: 16px; bottom: 16px; z-index: 30; box-shadow: 0 10px 24px rgba(0,0,0,.22); border-radius: 999px; }
 
@@ -250,7 +251,7 @@
     <p>Cortadas a láser en MDF, en blanco o negro y con tu logo si querés. Mirá las formas, buscá tu medida y pedinos tu presupuesto.</p>
     <div class="acciones">
       <a class="btn btn-rojo" href="#precios">Ver lista de precios</a>
-      <a class="btn btn-borde" href="#pedido">Hacé tu pedido</a>
+      <a class="btn btn-borde-azul" href="#pedido">Hacé tu pedido</a>
     </div>
     <div class="datos">
       <div><b>10 a 45 cm</b>todas las medidas</div>
@@ -437,12 +438,24 @@
   /* ---------- Formas ---------- */
   function armarFormas() {
     $('formas-grilla').innerHTML = cfg.formas.map(f => `
-      <article class="forma-card">
+      <article class="forma-card" data-color="blanco">
         <div class="img">${f.foto
           ? `<img src="${f.foto}" alt="Base ${f.nombre}" loading="lazy">`
-          : `<svg class="negra" viewBox="0 0 100 100" aria-hidden="true"><g>${SILUETAS[f.id] || SILUETAS.redonda}</g></svg><svg class="blanca" viewBox="0 0 100 100" aria-hidden="true"><g>${SILUETAS[f.id] || SILUETAS.redonda}</g></svg>`}</div>
-        <div class="txt"><b>${f.nombre}</b><span>Blanco o negro · 10 a 45 cm</span></div>
+          : `<svg viewBox="0 0 100 100" role="img" aria-label="Base ${f.nombre}"><g>${SILUETAS[f.id] || SILUETAS.redonda}</g></svg>`}</div>
+        <div class="txt"><b>${f.nombre}</b><span>10 a 45 cm</span>
+          <div class="bolitas" role="group" aria-label="Color">
+            <button type="button" class="bolita" data-c="blanco" aria-pressed="true" aria-label="Blanco" title="Blanco"></button>
+            <button type="button" class="bolita" data-c="negro" aria-pressed="false" aria-label="Negro" title="Negro"></button>
+          </div>
+        </div>
       </article>`).join('');
+    // Las pelotitas cambian el color de la base de esa tarjeta.
+    $('formas-grilla').addEventListener('click', e => {
+      const b = e.target.closest('.bolita'); if (!b) return;
+      const card = b.closest('.forma-card');
+      card.dataset.color = b.dataset.c;
+      card.querySelectorAll('.bolita').forEach(x => x.setAttribute('aria-pressed', x === b));
+    });
   }
 
   /* ---------- Lista de precios ---------- */
