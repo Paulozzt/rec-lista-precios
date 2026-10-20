@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Rec Láser · Lista de precios</title>
+<title>Rec Láser · Lista mayorista</title>
 <meta name="description" content="Bases para tortas en MDF de Rec Láser, Villa María, Córdoba: formas, lista de precios, mayoristas y pedidos por WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -92,18 +92,15 @@
   .formas { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
   .forma-card { background: var(--blanco); border: 1px solid var(--linea); border-radius: var(--radio); overflow: hidden; box-shadow: var(--sombra); transition: transform .15s, box-shadow .15s; }
   .forma-card:hover { transform: translateY(-3px); box-shadow: 0 16px 34px rgba(20,30,45,.12); }
-  .forma-card .img { aspect-ratio: 1; display: grid; place-items: center; background: #f2f4f6; }
+  .forma-card .img { aspect-ratio: 1; display: grid; place-items: center; background: var(--azul-tinte); position: relative; }
+  .forma-card:nth-child(3n+2) .img { background: var(--rojo-tinte); }
+  .forma-card:nth-child(3n) .img { background: #f2f4f6; }
   .forma-card .img img { width: 100%; height: 100%; object-fit: cover; }
-  .forma-card .img svg { width: 58%; height: auto; filter: drop-shadow(0 10px 14px rgba(20,30,45,.18)); transition: transform .2s; }
-  .forma-card .img g { transition: fill .2s; }
-  .forma-card[data-color="blanco"] .img g { fill: #ffffff; }
-  .forma-card[data-color="negro"] .img g { fill: #1d1f22; }
-  .forma-card:hover .img svg { transform: scale(1.04); }
-  .bolitas { display: flex; gap: 8px; margin-top: 8px; }
-  .bolita { width: 26px; height: 26px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 1px #c5ccd4; cursor: pointer; padding: 0; }
-  .bolita[data-c="blanco"] { background: #fff; }
-  .bolita[data-c="negro"] { background: #1d1f22; }
-  .bolita[aria-pressed="true"] { box-shadow: 0 0 0 2px var(--rojo); }
+  .forma-card .img svg { position: absolute; width: 50%; height: auto; }
+  .forma-card .img .negra { left: 12%; top: 14%; filter: drop-shadow(0 6px 8px rgba(20,30,45,.25)); }
+  .forma-card .img .blanca { right: 12%; bottom: 14%; filter: drop-shadow(0 8px 12px rgba(20,30,45,.22)); }
+  .forma-card .img .negra g { fill: #1d1f22; }
+  .forma-card .img .blanca g { fill: #ffffff; }
   .forma-card .txt { padding: 12px 14px 14px; }
   .forma-card b { display: block; color: var(--azul); font-size: 16px; }
   .forma-card span { font-size: 13px; color: var(--suave); }
@@ -143,14 +140,6 @@
   .niveles-info { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
   .niveles-info span { font-size: 14px; font-weight: 700; padding: 6px 12px; border-radius: 999px; color: #fff; }
 
-  .combos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 36px; }
-  .combo { background: var(--blanco); border: 1px solid var(--linea); border-radius: var(--radio); overflow: hidden; display: grid; grid-template-columns: 42% 1fr; box-shadow: var(--sombra); }
-  .combo img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 1; }
-  .combo .cuerpo { padding: 20px; display: flex; flex-direction: column; gap: 10px; }
-  .combo h4 { margin: 0; font-size: 20px; font-weight: 800; color: var(--azul); }
-  .combo p { margin: 0; color: var(--suave); font-size: 15px; flex: 1; }
-  .regalo { align-self: flex-start; font-size: 13px; font-weight: 700; color: var(--rojo); background: var(--rojo-tinte); padding: 5px 10px; border-radius: 999px; }
-  .combo .precio-combo { font-size: 28px; font-weight: 800; color: var(--azul); }
 
   /* Banner mayoristas */
   .banner-may { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 34px; align-items: center; }
@@ -199,7 +188,6 @@
   @media (max-width: 960px) {
     .formas { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .fabrica, .banner-may, .contacto { grid-template-columns: 1fr; }
-    .combos { grid-template-columns: 1fr; }
   }
   @media (max-width: 860px) {
     .hamb { display: grid; place-items: center; }
@@ -213,9 +201,10 @@
     section { padding: 48px 0; }
     .formas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .puntos, .campos { grid-template-columns: 1fr; }
-    .combo { grid-template-columns: 1fr; }
-    .combo img { aspect-ratio: 16 / 11; }
-    th, td { padding: 12px; }
+    th, td { padding: 11px 8px; }
+    thead th { white-space: normal; font-size: 11px; letter-spacing: .04em; line-height: 1.25; }
+    thead th small { display: block; font-size: 11px; }
+    td { font-size: 15px; }
     .flotante span { display: none; }
     .flotante { padding: 0 16px; }
     .datos { gap: 22px; }
@@ -248,15 +237,15 @@
   <div class="wrap">
     <div class="ojo"><span class="laser" aria-hidden="true"></span><span id="fecha">Lista de precios</span></div>
     <h1>Bases para tortas, <span>directo de fábrica.</span></h1>
-    <p>Cortadas a láser en MDF, en blanco o negro y con tu logo si querés. Mirá las formas, buscá tu medida y pedinos tu presupuesto.</p>
+    <p>Bases lisas cortadas a láser en MDF, en blanco o negro. Desde 200 bases combinando formas, medidas y colores como quieras.</p>
     <div class="acciones">
-      <a class="btn btn-rojo" href="#precios">Ver lista de precios</a>
+      <a class="btn btn-rojo" href="#precios">Ver lista mayorista</a>
       <a class="btn btn-borde-azul" href="#pedido">Hacé tu pedido</a>
     </div>
     <div class="datos">
       <div><b>10 a 45 cm</b>todas las medidas</div>
-      <div><b>Desde 1</b>unidad</div>
-      <div><b>200+</b>bases, precio mayorista</div>
+      <div><b>3 niveles</b>Bronce, Plata y Oro</div>
+      <div><b>Desde 200</b>bases, combinadas</div>
     </div>
   </div>
 </div>
@@ -271,7 +260,7 @@
         <p>Todas las formas vienen en blanco o negro y en todas las medidas. Y tienen el mismo precio.</p>
       </div>
       <div class="formas" id="formas-grilla"></div>
-      <p class="nota-formas">¿Necesitás una forma especial o con tu logo? También la hacemos. <a href="#pedido"><b>Escribinos</b></a>.</p>
+      <p class="nota-formas">Podés combinar todas las formas en un mismo pedido. ¿Buscás otra forma? <a href="#pedido"><b>Escribinos</b></a>.</p>
     </div>
   </section>
 
@@ -287,7 +276,7 @@
         <div class="puntos">
           <div class="punto"><b>Apta alimentos</b><span>Madera certificada para uso alimentario.</span></div>
           <div class="punto"><b>Resistente</b><span>MDF de 3 mm que soporta hasta 10 kg.</span></div>
-          <div class="punto"><b>Con tu logo</b><span>Grabado láser en pedidos minoristas. Antes de fabricar te mandamos la prueba.</span></div>
+          <div class="punto"><b>Combinás como quieras</b><span>Mezclá formas, medidas y colores hasta llegar a 200 bases o más.</span></div>
           <div class="punto"><b>Envíos a todo el país</b><span>Por Andreani o Correo. El flete se calcula aparte.</span></div>
         </div>
       </div>
@@ -301,7 +290,7 @@
       <div class="sec-tit">
         <div class="ojo"><span class="laser" aria-hidden="true"></span>Lista de precios</div>
         <h2>Buscá tu medida</h2>
-        <p>Precios unitarios (por base) según la medida: es el mismo para todas las formas y colores.</p>
+        <p>Precios mayoristas unitarios (por base), desde 200 bases lisas, sin logo. Es el mismo precio para todas las formas y colores.</p>
       </div>
 
       <div class="herramientas">
@@ -310,10 +299,6 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 2a8 8 0 1 0 4.9 14.3l5.4 5.4 1.4-1.4-5.4-5.4A8 8 0 0 0 10 2Zm0 2a6 6 0 1 1 0 12 6 6 0 0 1 0-12Z"/></svg>
           <input id="buscar" type="search" inputmode="numeric" placeholder="Buscá una medida, ej: 25" autocomplete="off">
         </label>
-        <div class="segment" id="tipo-lista" role="group" aria-label="Tipo de precio">
-          <button type="button" data-t="minorista" aria-pressed="true">Minorista</button>
-          <button type="button" data-t="mayorista" aria-pressed="false">Mayorista</button>
-        </div>
       </div>
 
       <div class="tabla"><div class="tabla-scroll">
@@ -325,7 +310,6 @@
       <div class="bajo-tabla" id="bajo-tabla"></div>
       <div class="niveles-info" id="niveles-info"></div>
 
-      <div class="combos" id="combos-lista"></div>
     </div>
   </section>
 
@@ -356,7 +340,7 @@
       <div class="sec-tit">
         <div class="ojo"><span class="laser" aria-hidden="true"></span>Hacé tu pedido</div>
         <h2>Contanos qué te gustaría llevar y te lo cotizamos</h2>
-        <p>Escribinos como te salga: formas, medidas, cantidades, si va con logo. Te respondemos por WhatsApp de lunes a viernes de 9 a 18 h. El flete se paga aparte.</p>
+        <p>Escribinos como te salga: formas, medidas, colores y cantidades. Te respondemos por WhatsApp de lunes a viernes de 9 a 18 h. El flete se paga aparte.</p>
       </div>
       <div class="contacto">
         <div class="contacto-info" id="vias"></div>
@@ -364,7 +348,7 @@
           <div class="campos">
             <label class="campo">Tu nombre<input id="f-nombre" autocomplete="name" required></label>
             <label class="campo">Tu ciudad<input id="f-ciudad" autocomplete="address-level2"></label>
-            <label class="campo ancho">¿Qué te gustaría llevar?<textarea id="f-msj" required placeholder="Ej: 30 bases redondas blancas de 25 cm y 20 cuadradas negras de 30 cm, con mi logo."></textarea></label>
+            <label class="campo ancho">¿Qué te gustaría llevar?<textarea id="f-msj" required placeholder="Ej: 100 redondas blancas de 25 cm, 60 cuadradas negras de 30 cm y 40 gotas blancas de 20 cm."></textarea></label>
           </div>
           <div class="error" id="f-error" role="alert"></div>
           <button class="btn btn-wa" type="submit" id="f-enviar"></button>
@@ -419,14 +403,13 @@
     'banderin': '<path d="M18 8h64v84L50 72 18 92Z"/>',
     'cartel': '<path d="M18 8h64l10 10v64l-10 10H18L8 82V18Z"/>'
   };
-  const MIN = [['unidad', 'Precio unitario', 1], ['x30', 'Pack x30', 30], ['x50', 'Pack x50', 50], ['x100', 'Pack x100', 100]];
   const COLOR_NIVEL = { bronce: '#9a6534', plata: '#5d6b78', oro: '#a8801c' };
 
   const $ = (id) => document.getElementById(id);
   const pesos = (n) => '$ ' + Math.round(n).toLocaleString('es-AR');
   const miles = (n) => Math.round(n).toLocaleString('es-AR');
   let cfg, datos, porCm = {};
-  const estado = { tipo: 'minorista', busca: '', forma: 'redonda', color: 'blanco', cm: 25, cant: 50 };
+  const estado = { busca: '' };
 
   const numWa = () => (cfg.contacto.whatsapp || '').replace(/\D/g, '');
   const urlWa = (msj) => numWa() ? `https://wa.me/${numWa()}?text=${encodeURIComponent(msj)}` : (cfg.contacto.instagram || '#');
@@ -438,61 +421,26 @@
   /* ---------- Formas ---------- */
   function armarFormas() {
     $('formas-grilla').innerHTML = cfg.formas.map(f => `
-      <article class="forma-card" data-color="blanco">
+      <article class="forma-card">
         <div class="img">${f.foto
           ? `<img src="${f.foto}" alt="Base ${f.nombre}" loading="lazy">`
-          : `<svg viewBox="0 0 100 100" role="img" aria-label="Base ${f.nombre}"><g>${SILUETAS[f.id] || SILUETAS.redonda}</g></svg>`}</div>
-        <div class="txt"><b>${f.nombre}</b><span>10 a 45 cm</span>
-          <div class="bolitas" role="group" aria-label="Color">
-            <button type="button" class="bolita" data-c="blanco" aria-pressed="true" aria-label="Blanco" title="Blanco"></button>
-            <button type="button" class="bolita" data-c="negro" aria-pressed="false" aria-label="Negro" title="Negro"></button>
-          </div>
-        </div>
+          : `<svg class="negra" viewBox="0 0 100 100" aria-hidden="true"><g>${SILUETAS[f.id] || SILUETAS.redonda}</g></svg><svg class="blanca" viewBox="0 0 100 100" aria-hidden="true"><g>${SILUETAS[f.id] || SILUETAS.redonda}</g></svg>`}</div>
+        <div class="txt"><b>${f.nombre}</b><span>Blanco o negro · 10 a 45 cm</span></div>
       </article>`).join('');
-    // Las pelotitas cambian el color de la base de esa tarjeta.
-    $('formas-grilla').addEventListener('click', e => {
-      const b = e.target.closest('.bolita'); if (!b) return;
-      const card = b.closest('.forma-card');
-      card.dataset.color = b.dataset.c;
-      card.querySelectorAll('.bolita').forEach(x => x.setAttribute('aria-pressed', x === b));
-    });
   }
 
   /* ---------- Lista de precios ---------- */
   function pintarLista() {
-    const may = estado.tipo === 'mayorista';
     const q = estado.busca.replace(/\D/g, '');
     const filas = datos.medidas.filter(m => !q || String(m.cm).startsWith(q));
-    const celda = (v, n) => v ? `<td class="num">${pesos(v)}${n > 1 ? `<span class="por">${pesos(v / n)} unitario</span>` : ''}</td>` : '<td class="num"><span class="cons">Consultar</span></td>';
-
-    if (may) {
-      $('thead').innerHTML = '<th>Medida</th>' + cfg.niveles.map(nv => `<th class="num nivel-${nv.id}">${nv.nombre} · unitario<br><small style="font-weight:600;text-transform:none;letter-spacing:0">${nv.rango}</small></th>`).join('');
-      $('tbody').innerHTML = filas.map(m => `<tr><td><b>${m.cm} cm</b></td>${cfg.niveles.map(nv => celda(m[nv.id], 1)).join('')}</tr>`).join('');
-      $('bajo-tabla').textContent = `Precios unitarios (por base), desde ${cfg.mayorista_desde} bases lisas, sin logo. Podés combinar formas, medidas y colores: el nivel depende de la cantidad total del pedido.`;
-      $('niveles-info').innerHTML = cfg.niveles.map(nv => `<span style="background:${COLOR_NIVEL[nv.id]}">${nv.nombre}: ${nv.rango}</span>`).join('');
-    } else {
-      $('thead').innerHTML = '<th>Medida</th>' + MIN.map(([, col]) => `<th class="num">${col}</th>`).join('');
-      $('tbody').innerHTML = filas.map(m => `<tr><td><b>${m.cm} cm</b></td>${MIN.map(([k, , n]) => celda(m[k], n)).join('')}</tr>`).join('');
-      $('bajo-tabla').textContent = 'El precio unitario es por base. En los packs, abajo del total, te mostramos el precio unitario. "Consultar" = esa medida no viene en pack.';
-      $('niveles-info').innerHTML = '';
-    }
-    if (!filas.length) {
-      $('tbody').innerHTML = `<tr><td colspan="5" class="vacio">No tenemos la medida "${estado.busca}". Las medidas van de ${datos.medidas[0].cm} a ${datos.medidas.at(-1).cm} cm.</td></tr>`;
-    }
-    document.querySelectorAll('#tipo-lista button').forEach(b => b.setAttribute('aria-pressed', b.dataset.t === estado.tipo));
-  }
-
-  function armarCombos() {
-    $('combos-lista').innerHTML = cfg.combos.map(c => `
-      <article class="combo">
-        <img src="${c.foto}" alt="${c.nombre}" loading="lazy">
-        <div class="cuerpo">
-          <h4>${c.nombre}</h4>
-          <p>${c.detalle}</p>
-          <span class="regalo">Logo grabado de regalo</span>
-          <span class="precio-combo">${pesos(c.precio)}</span>
-        </div>
-      </article>`).join('');
+    const celda = v => v ? `<td class="num">${pesos(v)}</td>` : '<td class="num"><span class="cons">Consultar</span></td>';
+    $('thead').innerHTML = '<th>Medida</th>' + cfg.niveles.map(nv =>
+      `<th class="num nivel-${nv.id}">${nv.nombre} · unitario<br><small style="font-weight:600;text-transform:none;letter-spacing:0">${nv.rango}</small></th>`).join('');
+    $('tbody').innerHTML = filas.length
+      ? filas.map(m => `<tr><td><b>${m.cm} cm</b></td>${cfg.niveles.map(nv => celda(m[nv.id])).join('')}</tr>`).join('')
+      : `<tr><td colspan="4" class="vacio">No tenemos la medida "${estado.busca}". Las medidas van de ${datos.medidas[0].cm} a ${datos.medidas.at(-1).cm} cm.</td></tr>`;
+    $('bajo-tabla').textContent = `Precio unitario por base. El nivel depende de la cantidad total del pedido, sumando todas las formas, medidas y colores.`;
+    $('niveles-info').innerHTML = cfg.niveles.map(nv => `<span style="background:${COLOR_NIVEL[nv.id]}">${nv.nombre}: ${nv.rango}</span>`).join('');
   }
 
   /* ---------- Mayoristas ---------- */
@@ -551,9 +499,8 @@
     botonWa($('btn-nav'), 'WhatsApp', 'Hola! Quiero hacer una consulta.');
     botonWa($('btn-flot'), 'Consultar por WhatsApp', 'Hola! Quiero hacer una consulta sobre las bases.');
 
-    armarMenu(); armarFormas(); armarCombos(); armarMayoristas(); armarContacto();
+    armarMenu(); armarFormas(); armarMayoristas(); armarContacto();
     $('buscar').addEventListener('input', e => { estado.busca = e.target.value; pintarLista(); });
-    $('tipo-lista').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { estado.tipo = b.dataset.t; pintarLista(); } });
     pintarLista();
   }
 

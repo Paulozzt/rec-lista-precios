@@ -63,19 +63,5 @@
       "id": "banderin",
       "nombre": "Banderín"
     }
-  ],
-  "combos": [
-    {
-      "nombre": "Combo Bases 1",
-      "detalle": "30 bases redondas: 10 de 20 cm, 10 de 25 cm y 10 de 30 cm, más toppers surtidos.",
-      "foto": "https://acdn-us.mitiendanube.com/stores/002/083/531/products/whatsapp-image-2024-10-28-at-15-19-23-ba92a7f4f41ad9e9fe17301396683195-1024-1024.webp",
-      "precio": 52900
-    },
-    {
-      "nombre": "Combo Bases 2",
-      "detalle": "30 bases redondas y cuadradas en 20, 25 y 30 cm, más toppers surtidos.",
-      "foto": "https://acdn-us.mitiendanube.com/stores/002/083/531/products/whatsapp-image-2024-10-28-at-15-19-24-4feec954df3bde9f8f17301397862666-1024-1024.webp",
-      "precio": 55400
-    }
   ]
 }
