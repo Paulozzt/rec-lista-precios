@@ -108,7 +108,20 @@
 
   /* Fábrica */
   .fabrica { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: center; }
-  .fabrica .foto img { width: 100%; aspect-ratio: 4 / 3.4; object-fit: cover; border-radius: 20px; box-shadow: var(--sombra); }
+  .carrusel { position: relative; border-radius: 20px; overflow: hidden; box-shadow: var(--sombra); background: #e9ecef; }
+  .carrusel .pista { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; }
+  .carrusel .pista::-webkit-scrollbar { display: none; }
+  .carrusel figure { flex: 0 0 100%; margin: 0; scroll-snap-align: start; position: relative; }
+  .carrusel img { width: 100%; aspect-ratio: 4 / 3.4; object-fit: cover; }
+  .carrusel figcaption { position: absolute; left: 14px; bottom: 14px; background: rgba(255,255,255,.92); color: var(--azul); font-size: 14px; font-weight: 700; padding: 7px 12px; border-radius: 10px; }
+  .carrusel .flecha { position: absolute; top: 50%; transform: translateY(-50%); width: 46px; height: 46px; border-radius: 50%; border: 0; cursor: pointer;
+    background: rgba(255,255,255,.92); color: var(--azul); display: grid; place-items: center; box-shadow: 0 4px 12px rgba(0,0,0,.18); }
+  .carrusel .flecha:hover { background: #fff; color: var(--rojo); }
+  .carrusel .flecha svg { width: 22px; height: 22px; }
+  .carrusel .ant { left: 12px; } .carrusel .sig { right: 12px; }
+  .carrusel .puntos-c { position: absolute; right: 14px; bottom: 16px; display: flex; gap: 6px; }
+  .carrusel .puntos-c button { width: 10px; height: 10px; border-radius: 50%; border: 0; padding: 0; cursor: pointer; background: rgba(255,255,255,.6); box-shadow: 0 0 0 1px rgba(0,0,0,.15); }
+  .carrusel .puntos-c button[aria-current="true"] { background: var(--rojo); width: 24px; border-radius: 999px; }
   .puntos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 8px; }
   .punto { background: #fff; border: 1px solid #f1d3ce; border-radius: 14px; padding: 16px; box-shadow: var(--sombra); }
   .punto b { display: block; font-size: 17px; margin-bottom: 2px; color: var(--rojo); }
@@ -227,7 +240,7 @@
       <a href="#fabrica">Fábrica</a>
       <a href="#precios">Precios</a>
       <a href="#mayoristas">Mayoristas</a>
-      <a href="#pedido">Hacé tu pedido</a>
+      <a href="#pedido">Cotizar</a>
       <a class="btn btn-rojo btn-chico" id="btn-nav" target="_blank" rel="noopener"></a>
     </nav>
   </div>
@@ -240,7 +253,7 @@
     <p>Bases lisas cortadas a láser en MDF, en blanco o negro. Desde 200 bases combinando formas, medidas y colores como quieras.</p>
     <div class="acciones">
       <a class="btn btn-rojo" href="#precios">Ver lista mayorista</a>
-      <a class="btn btn-borde-azul" href="#pedido">Hacé tu pedido</a>
+      <a class="btn btn-borde-azul" href="#pedido">Cotizar por WhatsApp</a>
     </div>
     <div class="datos">
       <div><b>10 a 45 cm</b>todas las medidas</div>
@@ -280,7 +293,12 @@
           <div class="punto"><b>Envíos a todo el país</b><span>Por Andreani o Correo. El flete se calcula aparte.</span></div>
         </div>
       </div>
-      <div class="foto"><img id="foto-fabrica" alt="Bases de Rec Láser con logo grabado" loading="lazy"></div>
+      <div class="carrusel" id="carrusel" aria-roledescription="carrusel" aria-label="Fotos de la fábrica">
+        <div class="pista" id="pista"></div>
+        <button class="flecha ant" type="button" aria-label="Foto anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M15.4 5.4 14 4l-8 8 8 8 1.4-1.4L8.8 12z"/></svg></button>
+        <button class="flecha sig" type="button" aria-label="Foto siguiente"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m8.6 5.4 1.4-1.4 8 8-8 8-1.4-1.4 6.6-6.6z"/></svg></button>
+        <div class="puntos-c" id="puntos-c"></div>
+      </div>
     </div>
   </section>
 
@@ -338,7 +356,7 @@
   <section id="pedido">
     <div class="wrap">
       <div class="sec-tit">
-        <div class="ojo"><span class="laser" aria-hidden="true"></span>Hacé tu pedido</div>
+        <div class="ojo"><span class="laser" aria-hidden="true"></span>Cotizá tu pedido</div>
         <h2>Contanos qué te gustaría llevar y te lo cotizamos</h2>
         <p>Escribinos como te salga: formas, medidas, colores y cantidades. Te respondemos por WhatsApp de lunes a viernes de 9 a 18 h. El flete se paga aparte.</p>
       </div>
@@ -352,7 +370,7 @@
           </div>
           <div class="error" id="f-error" role="alert"></div>
           <button class="btn btn-wa" type="submit" id="f-enviar"></button>
-          <p class="legal">Se abre WhatsApp con tu pedido listo para enviar.</p>
+          <p class="legal">Se abre WhatsApp con tu pedido listo para cotizar.</p>
         </form>
       </div>
     </div>
@@ -443,32 +461,57 @@
     $('niveles-info').innerHTML = cfg.niveles.map(nv => `<span style="background:${COLOR_NIVEL[nv.id]}">${nv.nombre}: ${nv.rango}</span>`).join('');
   }
 
+  /* ---------- Carrusel de fotos ---------- */
+  function armarCarrusel() {
+    const fotos = cfg.galeria || [];
+    const pista = $('pista'), puntos = $('puntos-c'), car = $('carrusel');
+    pista.innerHTML = fotos.map((f, i) =>
+      `<figure aria-label="${i + 1} de ${fotos.length}"><img src="${f.src}" alt="${f.alt}" ${i ? 'loading="lazy"' : ''}>${f.texto ? `<figcaption>${f.texto}</figcaption>` : ''}</figure>`).join('');
+    puntos.innerHTML = fotos.map((_, i) => `<button type="button" aria-label="Ver foto ${i + 1}"></button>`).join('');
+    const actual = () => Math.round(pista.scrollLeft / pista.clientWidth);
+    const ir = i => pista.scrollTo({ left: ((i + fotos.length) % fotos.length) * pista.clientWidth });
+    const marcar = () => puntos.querySelectorAll('button').forEach((b, i) => b.setAttribute('aria-current', i === actual()));
+    car.querySelector('.ant').addEventListener('click', () => ir(actual() - 1));
+    car.querySelector('.sig').addEventListener('click', () => ir(actual() + 1));
+    puntos.addEventListener('click', e => { const b = e.target.closest('button'); if (b) ir([...puntos.children].indexOf(b)); });
+    pista.addEventListener('scroll', () => requestAnimationFrame(marcar));
+    marcar();
+    // Pasa sola cada 5 s, salvo que la persona esté encima o haya pedido menos movimiento.
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches && fotos.length > 1) {
+      let pausa = false;
+      car.addEventListener('mouseenter', () => { pausa = true; });
+      car.addEventListener('mouseleave', () => { pausa = false; });
+      car.addEventListener('touchstart', () => { pausa = true; }, { passive: true });
+      setInterval(() => { if (!pausa && !document.hidden) ir(actual() + 1); }, 5000);
+    }
+  }
+
   /* ---------- Mayoristas ---------- */
   function armarMayoristas() {
     $('may-desde').textContent = cfg.mayorista_desde;
     $('may-niveles').innerHTML = cfg.niveles.map(nv =>
       `<div style="background:${COLOR_NIVEL[nv.id]}">${nv.nombre}<span>${nv.rango}</span></div>`).join('');
-    botonWa($('btn-may'), 'Pedir precio mayorista',
-      `Hola! Quiero precio mayorista. Necesito ${cfg.mayorista_desde} bases o más (lisas, sin logo).`);
+    botonWa($('btn-may'), 'Cotizar por WhatsApp',
+      `Hola! Quiero cotizar un pedido mayorista de ${cfg.mayorista_desde} bases o más (lisas, sin logo).`);
   }
 
   /* ---------- Contacto ---------- */
   function armarContacto() {
     const vias = [];
-    if (numWa()) vias.push(`<a class="via" href="${urlWa('Hola! Quiero hacer una consulta.')}" target="_blank" rel="noopener"><span class="ic" style="background:#25d366">${ICON_WA}</span><span><b>WhatsApp</b><span>Respuesta en el día</span></span></a>`);
+    if (numWa()) vias.push(`<a class="via" href="${urlWa('Hola! Quiero cotizar un pedido.')}" target="_blank" rel="noopener"><span class="ic" style="background:#25d366">${ICON_WA}</span><span><b>Cotizar por WhatsApp</b><span>Respuesta en el día</span></span></a>`);
     if (cfg.contacto.instagram) vias.push(`<a class="via" href="${cfg.contacto.instagram}" target="_blank" rel="noopener"><span class="ic" style="background:#c13584">${ICON_IG}</span><span><b>Instagram</b><span>@reclaservm</span></span></a>`);
     if (cfg.contacto.tienda) vias.push(`<a class="via" href="${cfg.contacto.tienda}" target="_blank" rel="noopener"><span class="ic" style="background:var(--rojo)">${ICON_TIENDA}</span><span><b>Tienda online</b><span>Comprá directo con envío</span></span></a>`);
     $('vias').innerHTML = vias.join('');
 
     // Por ahora el formulario arma el mensaje y abre WhatsApp. Más adelante se conecta al formulario de GHL.
-    botonWa($('f-enviar'), 'Enviar mi pedido por WhatsApp', '');
+    botonWa($('f-enviar'), 'Cotizar por WhatsApp', '');
     $('f-enviar').removeAttribute('href');
     $('form').addEventListener('submit', e => {
       e.preventDefault();
       const v = id => $(id).value.trim();
       if (!v('f-nombre') || !v('f-msj')) { $('f-error').textContent = 'Completá tu nombre y qué te gustaría llevar.'; return; }
       $('f-error').textContent = '';
-      const msj = `Hola! Soy ${v('f-nombre')}${v('f-ciudad') ? ', de ' + v('f-ciudad') : ''}. Me gustaría llevar: ${v('f-msj')}`;
+      const msj = `Hola! Soy ${v('f-nombre')}${v('f-ciudad') ? ', de ' + v('f-ciudad') : ''}. Quiero cotizar: ${v('f-msj')}`;
       window.open(urlWa(msj), '_blank', 'noopener');
     });
   }
@@ -492,14 +535,13 @@
     ['logo', 'logo-pie'].forEach(id => { $(id).src = cfg.logo; });
     // El logo lleva a la tienda online.
     ['logo-link', 'logo-pie-link'].forEach(id => { $(id).href = cfg.contacto.tienda; });
-    $('foto-fabrica').src = cfg.foto_portada;
     const f = new Date(datos.actualizado + 'T12:00:00');
     $('fecha').textContent = 'Lista de precios · ' + f.toLocaleDateString('es-AR', { day: 'numeric', month: 'long', year: 'numeric' });
     if (datos.mock) $('aviso-mock').innerHTML = '<span class="aviso-mock">Datos de prueba: no son los precios reales.</span>';
-    botonWa($('btn-nav'), 'WhatsApp', 'Hola! Quiero hacer una consulta.');
-    botonWa($('btn-flot'), 'Consultar por WhatsApp', 'Hola! Quiero hacer una consulta sobre las bases.');
+    botonWa($('btn-nav'), 'Cotizar', 'Hola! Quiero cotizar un pedido.');
+    botonWa($('btn-flot'), 'Cotizar por WhatsApp', 'Hola! Quiero cotizar un pedido de bases.');
 
-    armarMenu(); armarFormas(); armarMayoristas(); armarContacto();
+    armarMenu(); armarFormas(); armarCarrusel(); armarMayoristas(); armarContacto();
     $('buscar').addEventListener('input', e => { estado.busca = e.target.value; pintarLista(); });
     pintarLista();
   }
