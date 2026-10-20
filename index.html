@@ -476,13 +476,13 @@
     puntos.addEventListener('click', e => { const b = e.target.closest('button'); if (b) ir([...puntos.children].indexOf(b)); });
     pista.addEventListener('scroll', () => requestAnimationFrame(marcar));
     marcar();
-    // Pasa sola cada 5 s, salvo que la persona esté encima o haya pedido menos movimiento.
+    // Pasa sola cada 2,5 s, salvo que la persona esté encima o haya pedido menos movimiento.
     if (!matchMedia('(prefers-reduced-motion: reduce)').matches && fotos.length > 1) {
       let pausa = false;
       car.addEventListener('mouseenter', () => { pausa = true; });
       car.addEventListener('mouseleave', () => { pausa = false; });
       car.addEventListener('touchstart', () => { pausa = true; }, { passive: true });
-      setInterval(() => { if (!pausa && !document.hidden) ir(actual() + 1); }, 5000);
+      setInterval(() => { if (!pausa && !document.hidden) ir(actual() + 1); }, 2500);
     }
   }
 
