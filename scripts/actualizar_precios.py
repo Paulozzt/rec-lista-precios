@@ -1,7 +1,8 @@
 """Baja la hoja "LISTA WEB" publicada como CSV y escribe data/precios.json.
 
-La hoja tiene que tener (como mínimo) estas columnas, con estos títulos:
-    DESCRIPCION | TAMAÑO EN CM | MINORISTA
+La hoja tiene que tener estas columnas, con estos títulos (como en LISTAS):
+    DESCRIPCION | TAMAÑO EN CM | MINORISTA | BRONCE | PLATA | ORO
+BRONCE/PLATA/ORO son opcionales: se leen de las filas "BASE" (precio por base).
 
 Se toman las filas cuya DESCRIPCION empieza con:
     "BASE"        -> precio por unidad
@@ -28,6 +29,7 @@ from pathlib import Path
 SALIDA = Path(os.environ.get("SALIDA_JSON") or Path(__file__).resolve().parent.parent / "data" / "precios.json")
 COLUMNA_PRECIO = os.environ.get("COLUMNA_PRECIO", "MINORISTA")
 TIPOS = [("PACK X 100", "x100"), ("PACK X 50", "x50"), ("PACK X 30", "x30"), ("BASE", "unidad")]
+NIVELES = ["bronce", "plata", "oro"]
 
 
 def numero(valor):
@@ -68,9 +70,14 @@ def main():
             continue
         m = medidas.setdefault(int(cm), {"cm": int(cm)})
         m.setdefault(clave, round(precio))
+        if clave == "unidad":  # precio por base en cada nivel mayorista
+            for nivel in NIVELES:
+                valor = numero(fila.get(nivel.upper()) or "")
+                if valor is not None:
+                    m.setdefault(nivel, round(valor))
 
     # Toda medida con precio por unidad entra; los packs que no existan quedan en null ("Consultar").
-    completas = [{"cm": m["cm"], **{k: m.get(k) for _, k in reversed(TIPOS)}}
+    completas = [{"cm": m["cm"], **{k: m.get(k) for _, k in reversed(TIPOS)}, **{n: m.get(n) for n in NIVELES}}
                  for m in sorted(medidas.values(), key=lambda m: m["cm"]) if "unidad" in m]
     if len(completas) < 5:
         sys.exit(f"Muy pocas medidas con precio ({len(completas)}): no piso el archivo. Revisá la hoja.")

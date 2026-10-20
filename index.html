@@ -4,281 +4,333 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>REC · Lista de precios</title>
-<meta name="description" content="Lista de precios de bases para tortas en MDF de REC, Villa María, Córdoba.">
+<title>Rec Láser · Lista de precios</title>
+<meta name="description" content="Lista de precios de bases para tortas en MDF de Rec Láser, Villa María, Córdoba.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f6f1e9;
-    --papel: #fffdf9;
-    --tinta: #24201b;
-    --suave: #6f665b;
-    --linea: #e6dccd;
-    --madera: #c99a6b;
-    --madera-osc: #8a5a32;
-    --acento: #b4532a;
-    --acento-tinte: #f8e7dc;
-    --sombra: 0 1px 2px rgba(60,40,20,.06), 0 8px 24px rgba(60,40,20,.08);
-    --radio: 18px;
+    --rojo: #c0392b;
+    --rojo-2: #cc4845;
+    --rojo-tinte: #fbecea;
+    --azul: #2c3e50;
+    --azul-2: #22313f;
+    --tinta: #1f2a35;
+    --suave: #64707d;
+    --fondo: #f9f9f9;
+    --blanco: #ffffff;
+    --linea: #e7eaee;
+    --sombra: 0 1px 2px rgba(20,30,45,.05), 0 10px 30px rgba(20,30,45,.07);
+    --radio: 16px;
   }
   * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
-  body {
-    margin: 0; background: var(--bg); color: var(--tinta);
-    font: 17px/1.55 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  }
-  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body { margin: 0; background: var(--fondo); color: var(--tinta); font: 500 17px/1.55 Montserrat, system-ui, sans-serif; }
+  img { max-width: 100%; display: block; }
   a { color: inherit; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
 
-  /* Encabezado */
-  header { padding: 22px 0 8px; }
-  .top { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-  .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-  .logo-marca {
-    width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center;
-    background: var(--tinta); color: var(--bg); font: 700 13px/1 Inter, sans-serif; letter-spacing: .04em; flex: none;
-  }
-  .logo-txt b { display: block; font-size: 17px; }
-  .logo-txt span { display: block; font-size: 14px; color: var(--suave); }
-  .fecha { font-size: 14px; color: var(--suave); background: var(--papel); border: 1px solid var(--linea); padding: 6px 12px; border-radius: 999px; }
-  .mock { color: var(--acento); font-weight: 600; }
+  /* Motivo láser: las líneas rojas del logo */
+  .laser { display: block; height: 22px; width: 64px;
+    background: repeating-linear-gradient(180deg, var(--rojo) 0 2px, transparent 2px 5px);
+    -webkit-mask: linear-gradient(90deg, #000 0%, #000 55%, transparent 100%); mask: linear-gradient(90deg, #000 0%, #000 55%, transparent 100%); }
 
-  .titulo { padding: 28px 0 22px; }
-  h1 { font-family: Fraunces, Georgia, serif; font-weight: 700; font-size: clamp(34px, 7vw, 54px); line-height: 1.05; margin: 0 0 12px; letter-spacing: -.01em; }
-  h1 em { font-style: normal; color: var(--acento); }
-  .titulo p { margin: 0; color: var(--suave); max-width: 560px; font-size: 18px; }
+  /* Barra superior + encabezado */
+  .barra { background: var(--rojo); color: #fff; text-align: center; font-size: 14px; font-weight: 600; padding: 7px 12px; letter-spacing: .02em; }
+  header { background: var(--blanco); border-bottom: 1px solid var(--linea); position: sticky; top: 0; z-index: 20; }
+  .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 72px; }
+  .nav img { height: 46px; width: auto; }
+  .nav nav { display: flex; gap: 26px; font-size: 15px; font-weight: 600; }
+  .nav nav a { text-decoration: none; color: var(--azul); }
+  .nav nav a:hover { color: var(--rojo); }
 
-  /* Bloque principal */
-  .elegir {
-    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 22px;
-    background: var(--papel); border: 1px solid var(--linea); border-radius: 26px; padding: 22px; box-shadow: var(--sombra);
-  }
-  .vista {
-    position: relative; border-radius: var(--radio); min-height: 360px; overflow: hidden;
-    background:
-      radial-gradient(90% 70% at 50% 45%, rgba(255,240,215,.55) 0%, rgba(255,240,215,0) 70%),
-      linear-gradient(160deg, #dcb68a 0%, #c99a6b 55%, #a8764a 100%);
-    display: grid; place-items: center;
-  }
-  .vista::after { /* veta de madera muy suave */
-    content: ""; position: absolute; inset: 0; opacity: .18; pointer-events: none;
-    background: repeating-linear-gradient(100deg, transparent 0 18px, rgba(120,70,30,.35) 18px 19px, transparent 19px 41px);
-  }
-  .vista svg { position: relative; z-index: 1; width: 78%; max-width: 300px; height: auto; transition: transform .35s cubic-bezier(.2,.8,.2,1); filter: drop-shadow(0 14px 18px rgba(70,40,15,.28)); }
-  .vista .forma { transition: fill .25s ease; }
-  .etq-medida {
-    position: absolute; z-index: 2; left: 14px; bottom: 14px; background: rgba(255,253,249,.92);
-    border-radius: 12px; padding: 8px 12px; font-size: 15px; box-shadow: var(--sombra);
-  }
-  .etq-medida b { font-family: Fraunces, Georgia, serif; font-size: 22px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 24px;
+    border-radius: 10px; text-decoration: none; font: 700 16px/1 Montserrat, sans-serif; border: 0; cursor: pointer; white-space: nowrap; transition: transform .12s, background .15s; }
+  .btn:active { transform: translateY(1px); }
+  .btn svg { width: 22px; height: 22px; flex: none; }
+  .btn-rojo { background: var(--rojo); color: #fff; }
+  .btn-rojo:hover { background: #a93226; }
+  .btn-azul { background: var(--azul); color: #fff; }
+  .btn-azul:hover { background: var(--azul-2); }
+  .btn-borde { background: transparent; color: var(--azul); box-shadow: inset 0 0 0 2px var(--azul); }
+  .btn-wa { background: #25d366; color: #0b2e17; }
+  .btn-chico { min-height: 44px; padding: 0 16px; font-size: 15px; }
 
-  .panel h2 { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--suave); margin: 4px 0 10px; }
-  .panel h2 + * { margin-bottom: 20px; }
+  /* Portada */
+  .portada { background: var(--blanco); border-bottom: 1px solid var(--linea); }
+  .portada .wrap { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 40px; align-items: center; padding-top: 48px; padding-bottom: 52px; }
+  .ojo { display: flex; align-items: center; gap: 12px; color: var(--rojo); font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: .12em; margin-bottom: 14px; }
+  h1 { font-size: clamp(34px, 5.6vw, 56px); line-height: 1.05; font-weight: 800; margin: 0 0 16px; color: var(--azul); letter-spacing: -.02em; }
+  h1 span { color: var(--rojo); }
+  .portada p { color: var(--suave); font-size: 18px; margin: 0 0 22px; max-width: 520px; }
+  .sellos { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 26px; padding: 0; list-style: none; }
+  .sellos li { font-size: 14px; font-weight: 600; color: var(--azul); background: var(--fondo); border: 1px solid var(--linea); padding: 7px 12px; border-radius: 999px; }
+  .acciones { display: flex; gap: 12px; flex-wrap: wrap; }
+  .foto { position: relative; }
+  .foto img { width: 100%; aspect-ratio: 4 / 4.4; object-fit: cover; border-radius: 22px; box-shadow: var(--sombra); }
+  .foto .laser { position: absolute; left: -26px; top: 34px; width: 120px; height: 46px; }
+  .foto .tarjeta { position: absolute; right: -10px; bottom: 26px; background: var(--blanco); border-radius: 14px; padding: 12px 16px; box-shadow: var(--sombra); font-size: 14px; color: var(--suave); }
+  .foto .tarjeta b { display: block; color: var(--azul); font-size: 22px; font-weight: 800; }
+
+  /* Secciones */
+  section { padding: 56px 0 0; }
+  .sec-tit { margin-bottom: 22px; }
+  .sec-tit .ojo { margin-bottom: 8px; }
+  h2 { font-size: clamp(26px, 4vw, 38px); line-height: 1.12; margin: 0; color: var(--azul); font-weight: 800; letter-spacing: -.01em; }
+  .sec-tit p { margin: 8px 0 0; color: var(--suave); max-width: 620px; }
+
+  /* Probador */
+  .probador { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); gap: 26px;
+    background: var(--blanco); border: 1px solid var(--linea); border-radius: 22px; padding: 22px; box-shadow: var(--sombra); }
+  .vista { position: relative; border-radius: var(--radio); min-height: 380px; overflow: hidden; display: grid; place-items: center;
+    background: radial-gradient(80% 70% at 50% 50%, #ffffff 0%, #eef1f4 70%, #e3e8ed 100%); }
+  .vista .laser { position: absolute; left: 0; top: 22px; width: 140px; height: 40px; opacity: .9; }
+  .vista svg { position: relative; z-index: 1; width: 76%; max-width: 300px; height: auto; transition: transform .35s cubic-bezier(.2,.8,.2,1);
+    filter: drop-shadow(0 16px 18px rgba(20,30,45,.22)); }
+  .etq { position: absolute; left: 14px; bottom: 14px; z-index: 2; background: var(--blanco); border-radius: 12px; padding: 9px 14px; box-shadow: var(--sombra); font-size: 15px; color: var(--suave); }
+  .etq b { color: var(--azul); font-size: 22px; font-weight: 800; margin-right: 4px; }
+
+  .control h3 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--suave); margin: 2px 0 10px; }
+  .control h3 + * { margin-bottom: 22px; }
   .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-  .chip {
-    display: inline-flex; align-items: center; gap: 8px; min-height: 46px; padding: 6px 14px 6px 8px;
-    border: 1.5px solid var(--linea); background: var(--papel); border-radius: 999px; cursor: pointer;
-    font: 500 16px/1 Inter, sans-serif; color: var(--tinta); transition: border-color .15s, background .15s;
-  }
-  .chip svg { width: 30px; height: 30px; }
-  .chip .forma { fill: var(--madera); }
-  .chip:hover { border-color: var(--madera); }
-  .chip[aria-pressed="true"] { border-color: var(--tinta); background: var(--tinta); color: var(--papel); }
-  .chip[aria-pressed="true"] .forma { fill: var(--papel); }
+  .chip { display: inline-flex; align-items: center; gap: 8px; min-height: 46px; padding: 6px 14px 6px 8px; border: 1.5px solid var(--linea); background: var(--blanco);
+    border-radius: 10px; cursor: pointer; font: 600 15px/1 Montserrat, sans-serif; color: var(--azul); transition: border-color .15s, background .15s; }
+  .chip svg { width: 28px; height: 28px; }
+  .chip .forma { fill: #c5ccd4; }
+  .chip:hover { border-color: var(--azul); }
+  .chip[aria-pressed="true"] { border-color: var(--rojo); background: var(--rojo-tinte); color: var(--rojo); }
+  .chip[aria-pressed="true"] .forma { fill: var(--rojo); }
 
-  .segment { display: inline-flex; background: #efe6d8; border-radius: 999px; padding: 4px; gap: 4px; flex-wrap: wrap; }
-  .segment button {
-    min-height: 42px; padding: 0 18px; border: 0; border-radius: 999px; background: transparent; cursor: pointer;
-    font: 600 16px/1 Inter, sans-serif; color: var(--suave);
-  }
-  .segment button[aria-pressed="true"] { background: var(--papel); color: var(--tinta); box-shadow: 0 1px 3px rgba(0,0,0,.12); }
-  .punto { display: inline-block; width: 14px; height: 14px; border-radius: 50%; vertical-align: -2px; margin-right: 6px; border: 1px solid #cbbfae; }
+  .segment { display: inline-flex; flex-wrap: wrap; gap: 4px; background: #eef1f4; border-radius: 12px; padding: 4px; }
+  .segment button { min-height: 42px; padding: 0 16px; border: 0; border-radius: 9px; background: transparent; cursor: pointer; font: 700 15px/1 Montserrat, sans-serif; color: var(--suave); }
+  .segment button[aria-pressed="true"] { background: var(--blanco); color: var(--azul); box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+  .punto { display: inline-block; width: 14px; height: 14px; border-radius: 50%; vertical-align: -2px; margin-right: 6px; border: 1px solid #c5ccd4; }
 
-  .medida-ctrl { display: flex; align-items: center; gap: 14px; }
-  .medida-ctrl input[type=range] { flex: 1; accent-color: var(--acento); height: 32px; }
-  .medida-ctrl output { font-family: Fraunces, Georgia, serif; font-size: 26px; min-width: 86px; text-align: right; }
+  .medida { display: flex; align-items: center; gap: 14px; }
+  .medida input { flex: 1; accent-color: var(--rojo); height: 32px; }
+  .medida output { font-size: 24px; font-weight: 800; color: var(--azul); min-width: 84px; text-align: right; }
 
-  .precio-grande {
-    display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap;
-    background: var(--acento-tinte); border-radius: var(--radio); padding: 16px 18px; margin-top: 4px;
-  }
-  .precio-grande .lbl { font-size: 15px; color: var(--madera-osc); }
-  .precio-grande .num { font-family: Fraunces, Georgia, serif; font-size: clamp(34px, 6vw, 44px); font-weight: 700; line-height: 1; }
-  .precio-grande .sub { width: 100%; font-size: 14px; color: var(--suave); }
+  .precio { background: var(--azul); color: #fff; border-radius: var(--radio); padding: 18px 20px; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 4px 16px; }
+  .precio .lbl { font-size: 15px; color: #c3cdd7; font-weight: 600; }
+  .precio .num { font-size: clamp(32px, 5.4vw, 42px); font-weight: 800; line-height: 1; grid-row: span 2; text-align: right; }
+  .precio .sub { font-size: 14px; color: #c3cdd7; }
+  .precio .btn { grid-column: 1 / -1; margin-top: 12px; }
 
   /* Tabla */
-  section { margin-top: 44px; }
-  .sec-tit { display: flex; align-items: end; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
-  h3 { font-family: Fraunces, Georgia, serif; font-size: clamp(26px, 4.5vw, 34px); margin: 0; line-height: 1.1; }
-  .sec-tit p { margin: 4px 0 0; color: var(--suave); }
-  .tabla { background: var(--papel); border: 1px solid var(--linea); border-radius: var(--radio); overflow: hidden; box-shadow: var(--sombra); }
+  .tabla { background: var(--blanco); border: 1px solid var(--linea); border-radius: var(--radio); overflow: hidden; box-shadow: var(--sombra); }
+  .tabla-scroll { max-height: 600px; overflow-y: auto; }
   table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
   th, td { padding: 13px 18px; text-align: left; border-bottom: 1px solid var(--linea); }
-  th { font-size: 13px; text-transform: uppercase; letter-spacing: .07em; color: var(--suave); font-weight: 600; background: #fbf7f1; }
-  td.num, th.num { text-align: right; }
+  thead th { position: sticky; top: 0; z-index: 1; background: var(--azul); color: #fff; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; }
+  thead th.col-sel { background: var(--rojo); }
+  .num { text-align: right; }
   tbody tr { cursor: pointer; transition: background .12s; }
-  tbody tr:hover { background: #fbf4ea; }
-  tbody tr.sel { background: var(--acento-tinte); }
-  tbody tr.sel td:first-child { box-shadow: inset 4px 0 0 var(--acento); }
-  tbody tr:last-child td { border-bottom: 0; }
-  td .por { display: block; font-size: 13px; color: var(--suave); }
-  .tabla-scroll { max-height: 600px; overflow-y: auto; }
-  th.col-sel { color: var(--acento); }
-  td.col-sel { font-weight: 600; }
-  tbody tr:not(.sel) td.col-sel { background: rgba(248,231,220,.45); }
-  .flotante[hidden] { display: none; }
-  thead th { position: sticky; top: 0; z-index: 1; }
+  tbody tr:hover { background: #f5f7f9; }
+  tbody tr.sel { background: var(--rojo-tinte); }
+  tbody tr.sel td:first-child { box-shadow: inset 4px 0 0 var(--rojo); }
+  td.col-sel { font-weight: 700; color: var(--azul); }
+  td .por { display: block; font-size: 13px; color: var(--suave); font-weight: 500; }
+  td b { color: var(--azul); }
 
-  /* Mayorista */
-  .mayorista {
-    display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 18px;
-    background: var(--tinta); color: var(--bg); border-radius: 26px; padding: 26px;
-  }
-  .mayorista h3 { color: var(--bg); }
-  .mayorista p { margin: 6px 0 0; color: #cfc4b4; }
-
-  .btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 22px;
-    border-radius: 999px; text-decoration: none; font: 600 17px/1 Inter, sans-serif; border: 0; cursor: pointer; white-space: nowrap;
-  }
-  .btn-wa { background: #25d366; color: #0b2e17; }
-  .btn-claro { background: var(--papel); color: var(--tinta); border: 1.5px solid var(--linea); }
-  .btn svg { width: 22px; height: 22px; }
-  .btn[aria-disabled="true"] { opacity: .55; pointer-events: none; }
+  /* Mayoristas */
+  .may { background: var(--azul); color: #fff; margin-top: 56px; padding: 56px 0; position: relative; overflow: hidden; }
+  .may .laser { position: absolute; right: 0; top: 40px; width: 260px; height: 80px; transform: scaleX(-1); opacity: .9; }
+  .may h2 { color: #fff; }
+  .may .sec-tit p { color: #c3cdd7; }
+  .may .ojo { color: #ff8a7d; }
+  .niveles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 6px 0 24px; }
+  .nivel { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); border-radius: var(--radio); padding: 22px; }
+  .nivel .medalla { display: inline-flex; align-items: center; gap: 8px; font-weight: 800; font-size: 18px; }
+  .nivel .medalla i { width: 16px; height: 16px; border-radius: 50%; display: inline-block; }
+  .nivel .rango { color: #c3cdd7; font-size: 15px; margin: 4px 0 14px; }
+  .nivel .num { text-align: left; font-size: 32px; font-weight: 800; line-height: 1.1; }
+  .nivel .cu { color: #c3cdd7; font-size: 14px; }
+  .nivel .ahorro { display: inline-block; margin-top: 12px; background: var(--rojo); color: #fff; font-size: 13px; font-weight: 700; padding: 5px 10px; border-radius: 999px; }
+  .may-pie { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .may-pie p { margin: 0; color: #c3cdd7; font-size: 15px; max-width: 560px; }
+  .may-medida { color: #fff; font-weight: 700; }
 
   /* Combos */
-  .combos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-  .combo { background: var(--papel); border: 1px solid var(--linea); border-radius: var(--radio); padding: 20px; display: flex; flex-direction: column; gap: 10px; box-shadow: var(--sombra); }
-  .combo .ico { width: 54px; height: 54px; border-radius: 14px; background: var(--acento-tinte); display: grid; place-items: center; }
-  .combo .ico svg { width: 34px; height: 34px; }
-  .combo h4 { margin: 0; font-size: 19px; }
-  .combo p { margin: 0; color: var(--suave); font-size: 16px; flex: 1; }
-  .combo .num { font-family: Fraunces, Georgia, serif; font-size: 28px; font-weight: 700; }
-  .regalo { align-self: flex-start; font-size: 13px; font-weight: 600; color: var(--acento); background: var(--acento-tinte); padding: 4px 10px; border-radius: 999px; }
+  .combos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  .combo { background: var(--blanco); border: 1px solid var(--linea); border-radius: var(--radio); overflow: hidden; display: grid; grid-template-columns: 44% 1fr; box-shadow: var(--sombra); }
+  .combo img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 1; }
+  .combo .cuerpo { padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+  .combo h4 { margin: 0; font-size: 20px; font-weight: 800; color: var(--azul); }
+  .combo p { margin: 0; color: var(--suave); font-size: 15px; flex: 1; }
+  .regalo { align-self: flex-start; font-size: 13px; font-weight: 700; color: var(--rojo); background: var(--rojo-tinte); padding: 5px 10px; border-radius: 999px; }
+  .combo .num { text-align: left; font-size: 28px; font-weight: 800; color: var(--azul); }
 
-  footer { margin: 56px 0 0; padding: 26px 0 110px; border-top: 1px solid var(--linea); color: var(--suave); font-size: 15px; }
-  footer .links { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+  footer { margin-top: 64px; background: var(--blanco); border-top: 1px solid var(--linea); padding: 34px 0 110px; color: var(--suave); font-size: 15px; }
+  footer .wrap { display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: center; }
+  footer img { height: 42px; width: auto; }
+  footer .links { display: flex; gap: 10px; flex-wrap: wrap; }
+  .aviso-mock { color: var(--rojo); font-weight: 700; }
 
-  .flotante { position: fixed; right: 16px; bottom: 16px; z-index: 10; box-shadow: 0 10px 24px rgba(0,0,0,.18); }
+  .flotante { position: fixed; right: 16px; bottom: 16px; z-index: 30; box-shadow: 0 10px 24px rgba(0,0,0,.2); border-radius: 999px; }
 
-  @media (max-width: 820px) {
-    .elegir { grid-template-columns: 1fr; padding: 14px; gap: 18px; }
-    .vista { min-height: 280px; }
+  @media (max-width: 900px) {
+    .nav nav { display: none; }
+    .portada .wrap { grid-template-columns: 1fr; gap: 28px; padding-top: 28px; padding-bottom: 36px; }
+    .foto { max-width: 460px; }
+    .foto .laser { left: -16px; }
+    .foto .tarjeta { right: 10px; }
+    .probador { grid-template-columns: 1fr; padding: 14px; gap: 20px; }
+    .vista { min-height: 290px; }
+    .niveles { grid-template-columns: 1fr; }
     .combos { grid-template-columns: 1fr; }
-    .mayorista { grid-template-columns: 1fr; padding: 22px; }
+    footer .wrap { grid-template-columns: 1fr; }
   }
-  @media (max-width: 640px) {
-    .col-otra { display: none; }
-  }
+  @media (max-width: 640px) { .col-otra { display: none; } }
   @media (max-width: 420px) {
-    th, td { padding: 12px 12px; }
-    .chip { font-size: 15px; }
+    th, td { padding: 12px; }
+    .combo { grid-template-columns: 1fr; }
+    .combo img { aspect-ratio: 16 / 11; }
     .flotante span { display: none; }
     .flotante { padding: 0 16px; }
+    .nav .btn span { display: none; }
+    .nav .btn { padding: 0 14px; }
   }
-  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
 </style>
 </head>
 <body>
 
-<header class="wrap">
-  <div class="top">
-    <a class="logo" href="#">
-      <span class="logo-marca" aria-hidden="true">REC</span>
-      <span class="logo-txt"><b>REC</b><span id="bajada">Bases para tortas</span></span>
-    </a>
-    <span class="fecha" id="fecha">Lista de precios</span>
+<div class="barra">Envíos a todo el país · Directo de fábrica</div>
+
+<header>
+  <div class="wrap nav">
+    <a href="#"><img id="logo" alt="Rec Láser" width="106" height="46"></a>
+    <nav aria-label="Secciones">
+      <a href="#precios">Precios</a>
+      <a href="#mayoristas">Mayoristas</a>
+      <a href="#combos">Combos</a>
+    </nav>
+    <a class="btn btn-azul btn-chico" id="btn-nav" target="_blank" rel="noopener"></a>
   </div>
 </header>
 
-<main class="wrap">
-  <div class="titulo">
-    <h1>Bases para tortas,<br><em>precios claros.</em></h1>
-    <p>Elegí la forma, el color y la medida y mirá el precio al toque. Las fabricamos en MDF cortado a láser, en blanco o negro.</p>
-  </div>
-
-  <div class="elegir">
-    <div class="vista" aria-live="polite">
-      <svg id="vista-svg" viewBox="0 0 100 100" role="img" aria-label="Vista de la base"></svg>
-      <div class="etq-medida"><b id="etq-cm">25 cm</b> · <span id="etq-forma">Redonda</span></div>
+<div class="portada">
+  <div class="wrap">
+    <div>
+      <div class="ojo"><span class="laser" aria-hidden="true"></span><span id="fecha">Lista de precios</span></div>
+      <h1>Bases para tortas, <span>directo de fábrica.</span></h1>
+      <p>Elegí forma, color y medida y mirá el precio al instante. Cortadas a láser en MDF, en blanco o negro, con tu logo si querés.</p>
+      <ul class="sellos">
+        <li>Madera apta alimentos</li>
+        <li>3 mm · soporta 10 kg</li>
+        <li>Desde 1 unidad</li>
+      </ul>
+      <div class="acciones">
+        <a class="btn btn-rojo" href="#precios">Ver precios</a>
+        <a class="btn btn-borde" href="#mayoristas">Precio mayorista</a>
+      </div>
     </div>
-
-    <div class="panel">
-      <h2>Forma</h2>
-      <div class="chips" id="formas" role="group" aria-label="Forma"></div>
-
-      <h2>Color</h2>
-      <div class="segment" id="colores" role="group" aria-label="Color">
-        <button type="button" data-color="blanco" aria-pressed="true"><span class="punto" style="background:#fbfaf7"></span>Blanco</button>
-        <button type="button" data-color="negro" aria-pressed="false"><span class="punto" style="background:#1d1b19"></span>Negro</button>
-      </div>
-
-      <h2>Presentación</h2>
-      <div class="segment" id="presentaciones" role="group" aria-label="Presentación">
-        <button type="button" data-p="unidad" aria-pressed="true">Unidad</button>
-        <button type="button" data-p="x30" aria-pressed="false">Pack x30</button>
-        <button type="button" data-p="x50" aria-pressed="false">Pack x50</button>
-        <button type="button" data-p="x100" aria-pressed="false">Pack x100</button>
-      </div>
-
-      <h2><label for="medida">Medida</label></h2>
-      <div class="medida-ctrl">
-        <input id="medida" type="range" min="10" max="45" step="1" value="25">
-        <output id="medida-out" for="medida">25 cm</output>
-      </div>
-
-      <div class="precio-grande">
-        <span class="lbl" id="precio-lbl">Precio por unidad</span>
-        <span class="num" id="precio">$ —</span>
-        <span class="sub" id="precio-sub">Mismo precio en todas las formas.</span>
-      </div>
+    <div class="foto">
+      <span class="laser" aria-hidden="true"></span>
+      <img id="foto-portada" alt="Bases de Rec Láser con logo grabado" loading="eager">
+      <div class="tarjeta">Medidas de<b>10 a 45 cm</b></div>
     </div>
   </div>
+</div>
 
-  <section>
+<main>
+  <section id="precios" class="wrap">
     <div class="sec-tit">
-      <div>
-        <h3>Todas las medidas</h3>
-        <p id="tabla-sub">Precio por unidad. Tocá una fila para verla arriba.</p>
+      <div class="ojo"><span class="laser" aria-hidden="true"></span>Armá tu base</div>
+      <h2>Mirá el precio al toque</h2>
+      <p>Todas las formas tienen el mismo precio por medida. Tocá y probá.</p>
+    </div>
+
+    <div class="probador">
+      <div class="vista" aria-live="polite">
+        <span class="laser" aria-hidden="true"></span>
+        <svg id="vista-svg" viewBox="0 0 100 100" role="img" aria-label="Vista de la base"></svg>
+        <div class="etq"><b id="etq-cm">25 cm</b><span id="etq-forma">Redonda</span></div>
+      </div>
+
+      <div class="control">
+        <h3>Forma</h3>
+        <div class="chips" id="formas" role="group" aria-label="Forma"></div>
+
+        <h3>Color</h3>
+        <div class="segment" id="colores" role="group" aria-label="Color">
+          <button type="button" data-color="blanco" aria-pressed="true"><span class="punto" style="background:#ffffff"></span>Blanco</button>
+          <button type="button" data-color="negro" aria-pressed="false"><span class="punto" style="background:#1d1f22"></span>Negro</button>
+        </div>
+
+        <h3>Presentación</h3>
+        <div class="segment" id="presentaciones" role="group" aria-label="Presentación">
+          <button type="button" data-p="unidad" aria-pressed="true">Unidad</button>
+          <button type="button" data-p="x30" aria-pressed="false">Pack x30</button>
+          <button type="button" data-p="x50" aria-pressed="false">Pack x50</button>
+          <button type="button" data-p="x100" aria-pressed="false">Pack x100</button>
+        </div>
+
+        <h3><label for="medida">Medida</label></h3>
+        <div class="medida">
+          <input id="medida" type="range" min="10" max="45" step="1" value="25">
+          <output id="medida-out" for="medida">25 cm</output>
+        </div>
+
+        <div class="precio">
+          <span class="lbl" id="precio-lbl">Precio por unidad</span>
+          <span class="num" id="precio">$ —</span>
+          <span class="sub" id="precio-sub">Mismo precio en todas las formas.</span>
+          <a class="btn btn-wa" id="btn-pedir" target="_blank" rel="noopener"></a>
+        </div>
       </div>
     </div>
-    <div class="tabla"><div class="tabla-scroll">
-      <table>
-        <thead><tr id="thead"></tr></thead>
-        <tbody id="tbody"></tbody>
-      </table>
-    </div></div>
+
+    <div style="margin-top:40px">
+      <div class="sec-tit">
+        <h2>Todas las medidas</h2>
+        <p>Precio por unidad y por pack, con lo que sale cada base. Tocá una fila para verla arriba.</p>
+      </div>
+      <div class="tabla"><div class="tabla-scroll">
+        <table>
+          <thead><tr id="thead"></tr></thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div></div>
+    </div>
   </section>
 
-  <section>
-    <div class="mayorista">
-      <div>
-        <h3>¿Comprás por mayor?</h3>
-        <p id="may-txt">Desde 200 bases tenés precio mayorista, y mejora con la cantidad. Escribinos y un vendedor te arma el presupuesto.</p>
+  <section id="mayoristas" class="may">
+    <span class="laser" aria-hidden="true"></span>
+    <div class="wrap">
+      <div class="sec-tit">
+        <div class="ojo">Para revendedores y negocios</div>
+        <h2>Precio mayorista desde <span id="may-desde">200</span> bases</h2>
+        <p>Cuantas más bases, mejor precio. Así queda cada base de <span class="may-medida" id="may-cm">25 cm</span> en cada nivel:</p>
       </div>
-      <a class="btn btn-wa" id="btn-may" href="#" target="_blank" rel="noopener"></a>
+      <div class="niveles" id="niveles"></div>
+      <div class="may-pie">
+        <p>Cambiá la medida arriba y estos precios se actualizan. Un vendedor te arma el presupuesto con el envío.</p>
+        <a class="btn btn-wa" id="btn-may" target="_blank" rel="noopener"></a>
+      </div>
     </div>
   </section>
 
-  <section>
+  <section id="combos" class="wrap">
     <div class="sec-tit">
-      <div>
-        <h3>Combos emprendedores</h3>
-        <p>Para arrancar con tu pastelería, con tu logo de regalo.</p>
-      </div>
+      <div class="ojo"><span class="laser" aria-hidden="true"></span>Para emprendedores</div>
+      <h2>Combos para arrancar</h2>
+      <p>Bases surtidas y toppers, con tu logo grabado de regalo.</p>
     </div>
-    <div class="combos" id="combos"></div>
+    <div class="combos" id="combos-lista"></div>
   </section>
 </main>
 
-<footer class="wrap">
-  <div class="links" id="links"></div>
-  <div>Precios de referencia en pesos. El envío se calcula aparte según tu código postal. Ante cualquier duda, confirmá con un vendedor.</div>
+<footer>
+  <div class="wrap">
+    <img id="logo-pie" alt="Rec Láser" width="96" height="42">
+    <div>Precios de referencia en pesos. El envío se calcula según tu código postal. <span id="aviso-mock"></span></div>
+    <div class="links" id="links"></div>
+  </div>
 </footer>
 
-<a class="btn btn-wa flotante" id="btn-flot" href="#" target="_blank" rel="noopener"></a>
+<a class="btn btn-wa flotante" id="btn-flot" target="_blank" rel="noopener"></a>
 
 <script>
 (() => {
@@ -313,13 +365,14 @@
     'banderin': '<path d="M18 8h64v84L50 72 18 92Z"/>',
     'cartel': '<path d="M18 8h64l10 10v64l-10 10H18L8 82V18Z"/>'
   };
-  const COLOR = { blanco: { fill: '#fbfaf7', stroke: '#e3dccf' }, negro: { fill: '#1d1b19', stroke: '#1d1b19' } };
+  const COLOR = { blanco: { fill: '#ffffff', stroke: '#dde2e7' }, negro: { fill: '#1d1f22', stroke: '#1d1f22' } };
   const PRES = {
     unidad: { col: 'Unidad', lbl: 'Precio por unidad', n: 1 },
     x30: { col: 'Pack x30', lbl: 'Pack de 30 bases', n: 30 },
     x50: { col: 'Pack x50', lbl: 'Pack de 50 bases', n: 50 },
     x100: { col: 'Pack x100', lbl: 'Pack de 100 bases', n: 100 }
   };
+  const MEDALLA = { bronce: '#c98a4b', plata: '#c9d1d9', oro: '#e5b93c' };
 
   const $ = (id) => document.getElementById(id);
   const pesos = (n) => '$ ' + Math.round(n).toLocaleString('es-AR');
@@ -329,92 +382,97 @@
   const estado = { forma: 'redonda', color: leer('rec-color', 'blanco'), p: 'unidad', cm: 25 };
   let cfg, datos, porCm = {};
 
-  function waLink(texto) {
+  function boton(el, texto, mensaje) {
     const n = (cfg.contacto.whatsapp || '').replace(/\D/g, '');
-    return n ? `https://wa.me/${n}?text=${encodeURIComponent(texto)}` : null;
+    if (n) {
+      el.innerHTML = ICON_WA + `<span>${texto}</span>`;
+      el.href = `https://wa.me/${n}?text=${encodeURIComponent(mensaje)}`;
+      el.hidden = false;
+    } else {
+      el.innerHTML = `<span>${texto}</span>`;
+      el.href = cfg.contacto.instagram || cfg.contacto.tienda || '#';
+    }
   }
-  function ponerBoton(el, texto, mensaje) {
-    const url = waLink(mensaje);
-    if (url) { el.innerHTML = ICON_WA + `<span>${texto}</span>`; el.href = url; return; }
-    // Sin número cargado en config.json: manda al Instagram para no dejar un botón muerto.
-    el.innerHTML = `<span>${texto}</span>`;
-    el.href = cfg.contacto.instagram || cfg.contacto.tienda || '#';
-  }
-
-  function svgForma(id, color) {
-    const c = COLOR[color];
-    return `<g class="forma" fill="${c.fill}" stroke="${c.stroke}" stroke-width="1">${FORMAS[id]}</g>`;
-  }
+  const svgForma = (id, color) => `<g fill="${COLOR[color].fill}" stroke="${COLOR[color].stroke}" stroke-width="1">${FORMAS[id]}</g>`;
 
   function pintar() {
     const fila = porCm[estado.cm];
     const forma = cfg.formas.find(f => f.id === estado.forma);
-    // vista
+    const pr = PRES[estado.p];
+
     $('vista-svg').innerHTML = svgForma(estado.forma, estado.color);
-    const escala = 0.55 + (estado.cm - 10) / 35 * 0.45;
-    $('vista-svg').style.transform = `scale(${escala.toFixed(3)})`;
+    $('vista-svg').style.transform = `scale(${(0.62 + (estado.cm - 10) / 35 * 0.42).toFixed(3)})`;
     $('etq-cm').textContent = estado.cm + ' cm';
     $('etq-forma').textContent = `${forma.nombre} · ${estado.color}`;
     $('medida-out').textContent = estado.cm + ' cm';
     $('medida').value = estado.cm;
-    // precio
-    const pr = PRES[estado.p];
-    $('precio-lbl').textContent = pr.lbl;
+
     const v = fila ? fila[estado.p] : null;
+    $('precio-lbl').textContent = pr.lbl;
     $('precio').textContent = v ? pesos(v) : 'Consultar';
-    $('precio-sub').textContent = !v
-      ? 'Esta medida no viene en pack: escribinos y te lo armamos.'
-      : pr.n > 1
-        ? `Sale ${pesos(v / pr.n)} cada base. Mismo precio en todas las formas.`
-        : 'Mismo precio en todas las formas y colores.';
-    // botones
+    $('precio-sub').textContent = !v ? 'Esta medida no viene en pack: te lo armamos.'
+      : pr.n > 1 ? `Sale ${pesos(v / pr.n)} cada base` : 'Mismo precio en todas las formas';
+    const pedido = `Hola! Quiero pedir: ${pr.lbl.toLowerCase()}, forma ${forma.nombre.toLowerCase()}, color ${estado.color}, de ${estado.cm} cm.`;
+    boton($('btn-pedir'), 'Pedir esta base', pedido);
+    boton($('btn-flot'), 'Consultar por WhatsApp', 'Hola! Quiero hacer una consulta sobre las bases.');
+
     document.querySelectorAll('#formas .chip').forEach(b => b.setAttribute('aria-pressed', b.dataset.id === estado.forma));
     document.querySelectorAll('#colores button').forEach(b => b.setAttribute('aria-pressed', b.dataset.color === estado.color));
     document.querySelectorAll('#presentaciones button').forEach(b => b.setAttribute('aria-pressed', b.dataset.p === estado.p));
-    // tabla
+
+    // Tabla
     const celda = (m, k) => {
-      const n = PRES[k].n, val = m[k];
-      const cls = 'num' + (k === estado.p ? ' col-sel' : ' col-otra');
+      const n = PRES[k].n, val = m[k], cls = 'num ' + (k === estado.p ? 'col-sel' : 'col-otra');
       if (!val) return `<td class="${cls}"><span class="por">Consultar</span></td>`;
       return `<td class="${cls}">${pesos(val)}${n > 1 ? `<span class="por">${pesos(val / n)} c/u</span>` : ''}</td>`;
     };
-    $('thead').innerHTML = '<th>Medida</th>' + Object.keys(PRES).map(k =>
-      `<th class="num ${k === estado.p ? 'col-sel' : 'col-otra'}">${PRES[k].col}</th>`).join('');
-    $('tabla-sub').textContent = 'Precio por unidad y por pack, con lo que sale cada base. Tocá una fila para verla arriba.';
-    $('tbody').innerHTML = datos.medidas.map(m => `
-      <tr data-cm="${m.cm}" class="${m.cm === estado.cm ? 'sel' : ''}">
-        <td><b>${m.cm} cm</b></td>${Object.keys(PRES).map(k => celda(m, k)).join('')}
-      </tr>`).join('');
-    ponerBoton($('btn-flot'), 'Pedir por WhatsApp',
-      `Hola! Quiero pedir: ${pr.lbl.toLowerCase()}, ${forma.nombre.toLowerCase()}, ${estado.color}, de ${estado.cm} cm.`);
-    $('btn-flot').hidden = !cfg.contacto.whatsapp;
+    $('thead').innerHTML = '<th>Medida</th>' + Object.keys(PRES).map(k => `<th class="num ${k === estado.p ? 'col-sel' : 'col-otra'}">${PRES[k].col}</th>`).join('');
+    $('tbody').innerHTML = datos.medidas.map(m =>
+      `<tr data-cm="${m.cm}" class="${m.cm === estado.cm ? 'sel' : ''}"><td><b>${m.cm} cm</b></td>${Object.keys(PRES).map(k => celda(m, k)).join('')}</tr>`).join('');
+
+    // Mayoristas
+    $('may-cm').textContent = estado.cm + ' cm';
+    $('niveles').innerHTML = cfg.niveles.map(nv => {
+      const p = fila && fila[nv.id];
+      const ahorro = p && fila.unidad && p < fila.unidad ? Math.round((1 - p / fila.unidad) * 100) : 0;
+      return `<article class="nivel">
+        <div class="medalla"><i style="background:${MEDALLA[nv.id] || '#ccc'}"></i>${nv.nombre}</div>
+        <div class="rango">${nv.rango}</div>
+        <div class="num">${p ? pesos(p) : 'Consultar'}</div>
+        <div class="cu">por base de ${estado.cm} cm</div>
+        ${ahorro ? `<span class="ahorro">${ahorro}% menos que minorista</span>` : ''}
+      </article>`;
+    }).join('');
+    boton($('btn-may'), 'Pedir presupuesto mayorista',
+      `Hola! Quiero precio mayorista. Necesito más de ${cfg.mayorista_desde} bases (por ejemplo de ${estado.cm} cm).`);
   }
 
   function armar() {
-    $('bajada').textContent = cfg.bajada;
+    ['logo', 'logo-pie'].forEach(id => { $(id).src = cfg.logo; });
+    $('foto-portada').src = cfg.foto_portada;
     const f = new Date(datos.actualizado + 'T12:00:00');
-    $('fecha').innerHTML = `Actualizada el ${f.toLocaleDateString('es-AR', { day: 'numeric', month: 'long', year: 'numeric' })}` +
-      (datos.mock ? ' · <span class="mock">datos de prueba</span>' : '');
-    $('may-txt').textContent = `Desde ${cfg.mayorista_desde} bases tenés precio mayorista, y mejora con la cantidad. Escribinos y un vendedor te arma el presupuesto.`;
-    ponerBoton($('btn-may'), 'Pedir precio mayorista', `Hola! Quiero el precio mayorista. Necesito más de ${cfg.mayorista_desde} bases.`);
+    $('fecha').textContent = 'Lista de precios · ' + f.toLocaleDateString('es-AR', { day: 'numeric', month: 'long', year: 'numeric' });
+    if (datos.mock) $('aviso-mock').innerHTML = '<span class="aviso-mock">Datos de prueba: estos no son los precios reales.</span>';
+    $('may-desde').textContent = cfg.mayorista_desde;
+    boton($('btn-nav'), 'Escribinos', 'Hola! Quiero hacer una consulta.');
 
     $('formas').innerHTML = cfg.formas.map(fm =>
-      `<button type="button" class="chip" data-id="${fm.id}" aria-pressed="false">
-        <svg viewBox="0 0 100 100" aria-hidden="true"><g class="forma">${FORMAS[fm.id]}</g></svg>${fm.nombre}
-      </button>`).join('');
+      `<button type="button" class="chip" data-id="${fm.id}" aria-pressed="false"><svg viewBox="0 0 100 100" aria-hidden="true"><g class="forma">${FORMAS[fm.id]}</g></svg>${fm.nombre}</button>`).join('');
 
-    $('combos').innerHTML = cfg.combos.map(c => `
+    $('combos-lista').innerHTML = cfg.combos.map(c => `
       <article class="combo">
-        <div class="ico"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="#b4532a">${FORMAS['flor-abierta']}</g></svg></div>
-        <h4>${c.nombre}</h4>
-        <p>${c.detalle}</p>
-        <span class="regalo">Logo de regalo</span>
-        <span class="num">${pesos(c.precio)}</span>
+        <img src="${c.foto}" alt="${c.nombre}" loading="lazy">
+        <div class="cuerpo">
+          <h4>${c.nombre}</h4>
+          <p>${c.detalle}</p>
+          <span class="regalo">Logo grabado de regalo</span>
+          <span class="num">${pesos(c.precio)}</span>
+        </div>
       </article>`).join('');
 
     const links = [];
-    if (cfg.contacto.tienda) links.push(`<a class="btn btn-claro" href="${cfg.contacto.tienda}" target="_blank" rel="noopener">Tienda online</a>`);
-    if (cfg.contacto.instagram) links.push(`<a class="btn btn-claro" href="${cfg.contacto.instagram}" target="_blank" rel="noopener">Instagram</a>`);
+    if (cfg.contacto.tienda) links.push(`<a class="btn btn-borde btn-chico" href="${cfg.contacto.tienda}" target="_blank" rel="noopener">Tienda online</a>`);
+    if (cfg.contacto.instagram) links.push(`<a class="btn btn-borde btn-chico" href="${cfg.contacto.instagram}" target="_blank" rel="noopener">Instagram</a>`);
     $('links').innerHTML = links.join('');
 
     $('formas').addEventListener('click', e => { const b = e.target.closest('.chip'); if (b) { estado.forma = b.dataset.id; pintar(); } });
@@ -424,7 +482,7 @@
     $('tbody').addEventListener('click', e => {
       const tr = e.target.closest('tr'); if (!tr) return;
       estado.cm = +tr.dataset.cm; pintar();
-      document.querySelector('.elegir').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.querySelector('.probador').scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
     pintar();
   }
@@ -434,13 +492,13 @@
     fetch('data/precios.json', { cache: 'no-store' }).then(r => r.json())
   ]).then(([c, d]) => {
     cfg = c; datos = d;
-    d.medidas.forEach(m => porCm[m.cm] = m);
+    d.medidas.forEach(m => { porCm[m.cm] = m; });
     const cms = d.medidas.map(m => m.cm);
     $('medida').min = Math.min(...cms); $('medida').max = Math.max(...cms);
     armar();
   }).catch(err => {
     document.querySelector('main').insertAdjacentHTML('afterbegin',
-      '<p style="background:#fde8e8;padding:14px;border-radius:12px">No se pudo cargar la lista de precios. Probá de nuevo en un rato.</p>');
+      '<p class="wrap" style="background:#fde8e8;padding:14px;border-radius:12px;margin-top:20px">No se pudo cargar la lista de precios. Probá de nuevo en un rato.</p>');
     console.error(err);
   });
 })();

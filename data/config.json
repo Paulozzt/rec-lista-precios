@@ -1,12 +1,19 @@
 {
-  "marca": "REC",
+  "marca": "Rec Láser",
+  "logo": "https://acdn-us.mitiendanube.com/stores/002/083/531/themes/common/logo-2093331054-1727294773-779fc56393d32871fad7578066b65bb81727294774-480-0.webp",
+  "foto_portada": "https://acdn-us.mitiendanube.com/stores/002/083/531/products/whatsapp-image-2026-06-10-at-13-23-183-37a9d38e9adb3ffebe17811089816996-1024-1024.webp",
   "bajada": "Bases para tortas en MDF cortadas a láser · Villa María, Córdoba",
   "contacto": {
-    "whatsapp": "",
+    "whatsapp": "543534253097",
     "tienda": "https://reclasershop.mitiendanube.com",
-    "instagram": "https://www.instagram.com/reclaservm"
+    "instagram": "https://instagram.com/reclaservm"
   },
   "mayorista_desde": 200,
+  "niveles": [
+    { "id": "bronce", "nombre": "Bronce", "rango": "200 a 999 bases" },
+    { "id": "plata", "nombre": "Plata", "rango": "1.000 a 2.999 bases" },
+    { "id": "oro", "nombre": "Oro", "rango": "3.000 bases o más" }
+  ],
   "formas": [
     { "id": "redonda", "nombre": "Redonda" },
     { "id": "cuadrada", "nombre": "Cuadrada" },
@@ -21,19 +28,16 @@
   ],
   "combos": [
     {
-      "nombre": "Combo Emprendedor 1",
-      "detalle": "30 bases redondas: 10 de 20 cm, 10 de 25 cm y 10 de 30 cm. Con tu logo de regalo.",
+      "nombre": "Combo Bases 1",
+      "detalle": "30 bases redondas: 10 de 20 cm, 10 de 25 cm y 10 de 30 cm, más toppers surtidos.",
+      "foto": "https://acdn-us.mitiendanube.com/stores/002/083/531/products/whatsapp-image-2024-10-28-at-15-19-23-ba92a7f4f41ad9e9fe17301396683195-1024-1024.webp",
       "precio": 52900
     },
     {
-      "nombre": "Combo Emprendedor 2",
-      "detalle": "30 bases surtidas, redondas y cuadradas, en 20, 25 y 30 cm. Con tu logo de regalo.",
+      "nombre": "Combo Bases 2",
+      "detalle": "30 bases redondas y cuadradas en 20, 25 y 30 cm, más toppers surtidos.",
+      "foto": "https://acdn-us.mitiendanube.com/stores/002/083/531/products/whatsapp-image-2024-10-28-at-15-19-24-4feec954df3bde9f8f17301397862666-1024-1024.webp",
       "precio": 55400
-    },
-    {
-      "nombre": "Combo Picada",
-      "detalle": "30 tablas para picada surtidas y 30 pinches. Con tu logo de regalo.",
-      "precio": 61800
     }
   ]
 }

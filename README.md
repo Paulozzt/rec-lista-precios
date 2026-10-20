@@ -10,7 +10,7 @@ Web estática (sin build) con la lista de precios de bases. Hoy tiene **datos de
 ## Conectar con la planilla
 
 1. Crear un Google Sheet aparte ("REC · Lista web"). **Nunca publicar la planilla de producción.**
-2. En A1: `=QUERY(IMPORTRANGE("<link planilla producción>";"LISTAS!A:F");"select Col1, Col2, Col3 where Col2 is not null";1)` y dar "Permitir acceso".
+2. En A1: `=QUERY(IMPORTRANGE("<link planilla producción>";"LISTAS!A:F");"select Col1, Col2, Col3, Col4, Col5, Col6 where Col2 is not null";1)` y dar "Permitir acceso".
 3. Archivo → Compartir → Publicar en la web → esa hoja → CSV. Copiar el link.
 4. En GitHub: Settings → Secrets → Actions → `SHEET_CSV_URL` = ese link.
 5. Actions → "Actualizar precios" → Run workflow (para probar sin esperar al lunes).
