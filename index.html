@@ -234,7 +234,7 @@
 
 <header>
   <div class="wrap nav">
-    <a href="#inicio" aria-label="Rec Láser, inicio"><img id="logo" alt="Rec Láser" width="106" height="46"></a>
+    <a id="logo-link" href="#inicio" target="_blank" rel="noopener" aria-label="Rec Láser, ir a la tienda"><img id="logo" alt="Rec Láser" width="106" height="46"></a>
     <button class="hamb" id="hamb" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
     </button>
@@ -306,7 +306,7 @@
       <div class="sec-tit">
         <div class="ojo"><span class="laser" aria-hidden="true"></span>Lista de precios</div>
         <h2>Buscá tu medida</h2>
-        <p>El precio es por medida: es el mismo para todas las formas y colores.</p>
+        <p>Precios unitarios (por base) según la medida: es el mismo para todas las formas y colores.</p>
       </div>
 
       <div class="herramientas">
@@ -416,7 +416,7 @@
 
 <footer>
   <div class="wrap">
-    <span class="logo-pie"><img id="logo-pie" alt="Rec Láser" width="83" height="36"></span>
+    <a class="logo-pie" id="logo-pie-link" target="_blank" rel="noopener" aria-label="Rec Láser, ir a la tienda"><img id="logo-pie" alt="Rec Láser" width="83" height="36"></a>
     <div>Precios de referencia en pesos. El flete se paga aparte. <span id="aviso-mock"></span></div>
   </div>
 </footer>
@@ -458,7 +458,7 @@
     'banderin': '<path d="M18 8h64v84L50 72 18 92Z"/>',
     'cartel': '<path d="M18 8h64l10 10v64l-10 10H18L8 82V18Z"/>'
   };
-  const MIN = [['unidad', 'Unidad', 1], ['x30', 'Pack x30', 30], ['x50', 'Pack x50', 50], ['x100', 'Pack x100', 100]];
+  const MIN = [['unidad', 'Precio unitario', 1], ['x30', 'Pack x30', 30], ['x50', 'Pack x50', 50], ['x100', 'Pack x100', 100]];
   const COLOR_NIVEL = { bronce: '#9a6534', plata: '#5d6b78', oro: '#a8801c' };
 
   const $ = (id) => document.getElementById(id);
@@ -490,17 +490,17 @@
     const may = estado.tipo === 'mayorista';
     const q = estado.busca.replace(/\D/g, '');
     const filas = datos.medidas.filter(m => !q || String(m.cm).startsWith(q));
-    const celda = (v, n) => v ? `<td class="num">${pesos(v)}${n > 1 ? `<span class="por">${pesos(v / n)} c/u</span>` : ''}</td>` : '<td class="num"><span class="cons">Consultar</span></td>';
+    const celda = (v, n) => v ? `<td class="num">${pesos(v)}${n > 1 ? `<span class="por">${pesos(v / n)} unitario</span>` : ''}</td>` : '<td class="num"><span class="cons">Consultar</span></td>';
 
     if (may) {
-      $('thead').innerHTML = '<th>Medida</th>' + cfg.niveles.map(nv => `<th class="num nivel-${nv.id}">${nv.nombre}<br><small style="font-weight:600;text-transform:none;letter-spacing:0">${nv.rango}</small></th>`).join('');
+      $('thead').innerHTML = '<th>Medida</th>' + cfg.niveles.map(nv => `<th class="num nivel-${nv.id}">${nv.nombre} · unitario<br><small style="font-weight:600;text-transform:none;letter-spacing:0">${nv.rango}</small></th>`).join('');
       $('tbody').innerHTML = filas.map(m => `<tr><td><b>${m.cm} cm</b></td>${cfg.niveles.map(nv => celda(m[nv.id], 1)).join('')}</tr>`).join('');
-      $('bajo-tabla').textContent = `Precio por base, desde ${cfg.mayorista_desde} bases. El nivel depende de la cantidad total del pedido.`;
+      $('bajo-tabla').textContent = `Todos los precios son unitarios (por base), desde ${cfg.mayorista_desde} bases. El nivel depende de la cantidad total del pedido.`;
       $('niveles-info').innerHTML = cfg.niveles.map(nv => `<span style="background:${COLOR_NIVEL[nv.id]}">${nv.nombre}: ${nv.rango}</span>`).join('');
     } else {
       $('thead').innerHTML = '<th>Medida</th>' + MIN.map(([, col]) => `<th class="num">${col}</th>`).join('');
       $('tbody').innerHTML = filas.map(m => `<tr><td><b>${m.cm} cm</b></td>${MIN.map(([k, , n]) => celda(m[k], n)).join('')}</tr>`).join('');
-      $('bajo-tabla').textContent = 'En los packs te mostramos cuánto sale cada base. "Consultar" = esa medida no viene en pack.';
+      $('bajo-tabla').textContent = 'El precio unitario es por base. En los packs, abajo del total, te mostramos el precio unitario. "Consultar" = esa medida no viene en pack.';
       $('niveles-info').innerHTML = '';
     }
     if (!filas.length) {
@@ -539,7 +539,7 @@
       const nv = cfg.niveles.find(x => x.id === nivel);
       total = m[nivel] * n;
       etq = `Precio mayorista · nivel ${nv.nombre}`;
-      lineas.push([`${miles(n)} bases × ${pesos(m[nivel])}`, pesos(total)]);
+      lineas.push([`${miles(n)} bases × ${pesos(m[nivel])} unitario`, pesos(total)]);
     } else {
       // Minorista: arma con packs (100, 50, 30) y el resto por unidad, y se queda con lo más barato.
       let resto = n;
@@ -548,14 +548,14 @@
         const veces = Math.floor(resto / tam);
         if (veces && m[k] / tam < m.unidad) { lineas.push([`${veces} pack${veces > 1 ? 's' : ''} x${tam}`, pesos(m[k] * veces)]); total += m[k] * veces; resto -= veces * tam; }
       }
-      if (resto) { lineas.push([`${resto} base${resto > 1 ? 's' : ''} sueltas × ${pesos(m.unidad)}`, pesos(m.unidad * resto)]); total += m.unidad * resto; }
+      if (resto) { lineas.push([`${resto} base${resto > 1 ? 's' : ''} sueltas × ${pesos(m.unidad)} unitario`, pesos(m.unidad * resto)]); total += m.unidad * resto; }
       etq = 'Precio minorista';
       if (n < cfg.mayorista_desde && n >= cfg.mayorista_desde * 0.75) etq += ` · con ${cfg.mayorista_desde} bases ya es mayorista`;
     }
 
     $('r-etq').textContent = etq;
     $('r-total').textContent = pesos(total);
-    $('r-prom').textContent = `${miles(n)} bases ${forma.nombre.toLowerCase()} ${estado.color} de ${estado.cm} cm · sale ${pesos(total / n)} cada una`;
+    $('r-prom').textContent = `${miles(n)} bases ${forma.nombre.toLowerCase()} ${estado.color} de ${estado.cm} cm · precio unitario promedio ${pesos(total / n)}`;
     $('r-desglose').innerHTML = lineas.map(([a, b]) => `<li><span>${a}</span><b>${b}</b></li>`).join('');
     const resumen = `${miles(n)} bases ${forma.nombre.toLowerCase()}, color ${estado.color}, de ${estado.cm} cm (aprox. ${pesos(total)})`;
     botonWa($('r-wa'), 'Pedir este presupuesto', `Hola! Calculé en la web: ${resumen}. ¿Me pasan el presupuesto con el envío?`);
@@ -615,6 +615,8 @@
 
   function armar() {
     ['logo', 'logo-pie'].forEach(id => { $(id).src = cfg.logo; });
+    // El logo lleva a la tienda online.
+    ['logo-link', 'logo-pie-link'].forEach(id => { $(id).href = cfg.contacto.tienda; });
     $('foto-fabrica').src = cfg.foto_portada;
     const f = new Date(datos.actualizado + 'T12:00:00');
     $('fecha').textContent = 'Lista de precios · ' + f.toLocaleDateString('es-AR', { day: 'numeric', month: 'long', year: 'numeric' });
