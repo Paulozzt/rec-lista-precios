@@ -1,6 +1,6 @@
 {
   "marca": "Rec Láser",
-  "logo": "https://acdn-us.mitiendanube.com/stores/002/083/531/themes/common/logo-2093331054-1727294773-779fc56393d32871fad7578066b65bb81727294774-480-0.webp",
+  "logo": "assets/logo-rec.webp",
   "foto_portada": "https://acdn-us.mitiendanube.com/stores/002/083/531/products/whatsapp-image-2026-06-10-at-13-23-183-37a9d38e9adb3ffebe17811089816996-1024-1024.webp",
   "bajada": "Bases para tortas en MDF cortadas a láser · Villa María, Córdoba",
   "contacto": {
@@ -10,21 +10,63 @@
   },
   "mayorista_desde": 200,
   "niveles": [
-    { "id": "bronce", "nombre": "Bronce", "rango": "200 a 999 bases" },
-    { "id": "plata", "nombre": "Plata", "rango": "1.000 a 2.999 bases" },
-    { "id": "oro", "nombre": "Oro", "rango": "3.000 bases o más" }
+    {
+      "id": "bronce",
+      "nombre": "Bronce",
+      "rango": "200 a 999 bases"
+    },
+    {
+      "id": "plata",
+      "nombre": "Plata",
+      "rango": "1.000 a 2.999 bases"
+    },
+    {
+      "id": "oro",
+      "nombre": "Oro",
+      "rango": "3.000 bases o más"
+    }
   ],
   "formas": [
-    { "id": "redonda", "nombre": "Redonda" },
-    { "id": "cuadrada", "nombre": "Cuadrada" },
-    { "id": "rectangular", "nombre": "Rectangular" },
-    { "id": "gota", "nombre": "Gota" },
-    { "id": "corazon", "nombre": "Corazón" },
-    { "id": "estrella", "nombre": "Estrella" },
-    { "id": "flor-abierta", "nombre": "Flor abierta" },
-    { "id": "flor-cerrada", "nombre": "Flor cerrada" },
-    { "id": "banderin", "nombre": "Banderín" },
-    { "id": "cartel", "nombre": "Cartel" }
+    {
+      "id": "redonda",
+      "nombre": "Redonda"
+    },
+    {
+      "id": "cuadrada",
+      "nombre": "Cuadrada"
+    },
+    {
+      "id": "rectangular",
+      "nombre": "Rectangular"
+    },
+    {
+      "id": "gota",
+      "nombre": "Gota"
+    },
+    {
+      "id": "corazon",
+      "nombre": "Corazón"
+    },
+    {
+      "id": "estrella",
+      "nombre": "Estrella"
+    },
+    {
+      "id": "flor-abierta",
+      "nombre": "Flor abierta"
+    },
+    {
+      "id": "flor-cerrada",
+      "nombre": "Flor cerrada"
+    },
+    {
+      "id": "banderin",
+      "nombre": "Banderín"
+    },
+    {
+      "id": "cartel",
+      "nombre": "Cartel"
+    }
   ],
   "combos": [
     {
