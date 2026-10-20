@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Rec Láser · Probar asistente</title>
+<meta name="description" content="Página de prueba del asistente de chat de Rec Láser.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rojo: #c0392b; --rojo-tinte: #fbecea; --azul: #2c3e50; --azul-tinte: #eaf0f5;
+    --tinta: #1f2a35; --suave: #64707d; --fondo: #f9f9f9; --blanco: #fff; --linea: #e5e9ee;
+    --sombra: 0 1px 2px rgba(20,30,45,.05), 0 10px 30px rgba(20,30,45,.08);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--fondo); color: var(--tinta); font: 500 17px/1.55 Montserrat, system-ui, sans-serif; }
+  a { color: inherit; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+  .barra { background: var(--rojo); color: #fff; text-align: center; font-size: 14px; font-weight: 700; padding: 7px 12px; }
+  header { background: var(--blanco); border-bottom: 1px solid var(--linea); }
+  .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 72px; }
+  .nav img { height: 46px; width: auto; display: block; }
+  .nav a.volver { font-weight: 700; color: var(--azul); text-decoration: none; font-size: 15px; padding: 10px 14px; border-radius: 10px; }
+  .nav a.volver:hover { background: var(--azul-tinte); }
+  .laser { display: inline-block; height: 18px; width: 54px; flex: none; color: var(--rojo);
+    background: repeating-linear-gradient(180deg, currentColor 0 2px, transparent 2px 5px);
+    -webkit-mask: linear-gradient(90deg, #000 55%, transparent); mask: linear-gradient(90deg, #000 55%, transparent); }
+  .ojo { display: flex; align-items: center; gap: 12px; color: var(--rojo); font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: .14em; margin-bottom: 10px; }
+  h1 { font-size: clamp(30px, 5vw, 46px); line-height: 1.08; margin: 0 0 12px; color: var(--azul); font-weight: 800; letter-spacing: -.02em; }
+  h1 span { color: var(--rojo); }
+  h2 { font-size: 22px; margin: 0 0 14px; color: var(--azul); font-weight: 800; }
+  .intro { padding: 40px 0 24px; text-align: center; }
+  .intro .ojo { justify-content: center; }
+  .intro p { color: var(--suave); margin: 0 auto; max-width: 660px; font-size: 18px; }
+
+  .pasos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 8px 0 28px; }
+  .paso { background: var(--blanco); border: 1px solid var(--linea); border-radius: 16px; padding: 18px; box-shadow: var(--sombra); }
+  .paso .n { width: 34px; height: 34px; border-radius: 50%; background: var(--rojo); color: #fff; display: grid; place-items: center; font-weight: 800; margin-bottom: 10px; }
+  .paso b { display: block; color: var(--azul); margin-bottom: 4px; }
+  .paso p { margin: 0; color: var(--suave); font-size: 15px; }
+  kbd { font: 700 13px Montserrat, sans-serif; background: var(--azul-tinte); color: var(--azul); border-radius: 6px; padding: 2px 7px; border: 1px solid #d6dee6; white-space: nowrap; }
+
+  /* El chat va centrado */
+  .chat-zona { background: linear-gradient(180deg, var(--azul-tinte), #f4f6f8); border: 1px solid var(--linea); border-radius: 24px; padding: 26px 16px; box-shadow: var(--sombra); }
+  .chat-zona .tit { text-align: center; margin-bottom: 14px; }
+  .chat-zona .tit b { color: var(--azul); font-size: 18px; }
+  .chat-zona .tit span { display: block; color: var(--suave); font-size: 14px; }
+  #chat-centro { max-width: 640px; margin: 0 auto; min-height: 520px; display: flex; justify-content: center; }
+  #chat-centro chat-widget { display: block; width: 100%; }
+  .cargando { align-self: center; color: var(--suave); font-weight: 600; }
+
+  .casos { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 18px; margin: 28px 0 0; }
+  .card { background: var(--blanco); border: 1px solid var(--linea); border-radius: 18px; padding: 22px; box-shadow: var(--sombra); }
+  ol.lista { list-style: none; margin: 0; padding: 0; counter-reset: n; }
+  ol.lista li { counter-increment: n; display: grid; grid-template-columns: 30px 1fr; gap: 10px; padding: 12px 0; border-top: 1px solid var(--linea); }
+  ol.lista li:first-child { border-top: 0; padding-top: 0; }
+  ol.lista li::before { content: counter(n); font-weight: 800; color: var(--rojo); }
+  .di { font-weight: 700; color: var(--azul); }
+  .esp { color: var(--suave); font-size: 15px; }
+  .tag { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 999px; margin-left: 6px; vertical-align: 2px; }
+  .t-may { background: #f3e6d8; color: #8a5a2b; } .t-pres { background: var(--azul-tinte); color: var(--azul); } .t-per { background: var(--rojo-tinte); color: var(--rojo); }
+  ul.tips { margin: 0; padding-left: 20px; color: var(--suave); }
+  ul.tips li { margin-bottom: 10px; }
+  ul.tips b { color: var(--azul); }
+  footer { margin-top: 48px; padding: 26px 0 40px; border-top: 1px solid var(--linea); background: var(--blanco); color: var(--suave); font-size: 14px; text-align: center; }
+
+  @media (max-width: 860px) {
+    .pasos, .casos { grid-template-columns: 1fr; }
+    #chat-centro { min-height: 480px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="barra">Página de prueba · Las conversaciones de acá se borran después</div>
+<header>
+  <div class="wrap nav">
+    <a href="../" aria-label="Volver a la lista mayorista"><img src="../assets/logo-rec.webp" alt="Rec Láser" width="106" height="46"></a>
+    <a class="volver" href="../">← Volver a la lista</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="intro">
+    <div class="ojo"><span class="laser" aria-hidden="true"></span>Asistente de prueba</div>
+    <h1>Probá el asistente de <span>Rec Láser</span></h1>
+    <p>Escribile en el chat de abajo como si fueras un cliente. Probá distintos casos y fijate cómo responde y a quién te pasa.</p>
+  </div>
+
+  <div class="pasos">
+    <div class="paso"><div class="n">1</div><b>Abrí una ventana de incógnito</b>
+      <p>Así el chat te toma como un cliente nuevo. En la compu: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>N</kbd> (Mac: <kbd>⌘</kbd> + <kbd>Shift</kbd> + <kbd>N</kbd>). En el celu: "Nueva pestaña de incógnito".</p></div>
+    <div class="paso"><div class="n">2</div><b>Una ventana = un cliente</b>
+      <p>Cada ventana de incógnito es una persona distinta. Para probar otro caso, cerrala y abrí una nueva. Podés tener varias abiertas a la vez.</p></div>
+    <div class="paso"><div class="n">3</div><b>Escribí como un cliente real</b>
+      <p>Con errores, mensajes cortados o sin dar todos los datos. Así escribe mucha gente, y el asistente tiene que arreglarse igual.</p></div>
+  </div>
+
+  <section class="chat-zona" aria-label="Chat de prueba">
+    <div class="tit"><b>Chat de Rec Láser</b><span>Elegí "chat en directo" para empezar</span></div>
+    <div id="chat-centro"><span class="cargando" id="cargando">Cargando el chat…</span></div>
+  </section>
+
+  <div class="casos">
+    <section class="card">
+      <h2>Cosas para probar</h2>
+      <ol class="lista">
+        <li><div><div class="di">"precio por mayor?"<span class="tag t-may">Mayorista</span></div><div class="esp">Te pasa el link de la lista mayorista, te pide nombre y ciudad y te deriva con un vendedor mayorista.</div></div></li>
+        <li><div><div class="di">"necesito 300 bases"<span class="tag t-may">Mayorista</span></div><div class="esp">Igual que el anterior: desde 200 bases es mayorista.</div></div></li>
+        <li><div><div class="di">"quiero 30 bases redondas blancas de 25"<span class="tag t-pres">Presupuesto</span></div><div class="esp">Te pide los datos que faltan una sola vez y le pasa tu pedido a un vendedor.</div></div></li>
+        <li><div><div class="di">"no sé qué medida me conviene"<span class="tag t-pres">Presupuesto</span></div><div class="esp">No te marea: le pasa tu pedido a un vendedor para que te recomiende.</div></div></li>
+        <li><div><div class="di">"quiero bases con mi logo"<span class="tag t-pres">Presupuesto</span></div><div class="esp">Te cuenta que se aprueba una prueba en PDF antes de fabricar y te pasa con un vendedor.</div></div></li>
+        <li><div><div class="di">"quiero un candy bar para 15 años"<span class="tag t-pres">Presupuesto</span></div><div class="esp">Trabajo a medida: te pide la idea y la cantidad. No te da precio.</div></div></li>
+        <li><div><div class="di">"pasame con alguien"<span class="tag t-per">Persona</span></div><div class="esp">Te pasa con una persona del equipo.</div></div></li>
+        <li><div><div class="di">"mi pedido llegó roto"<span class="tag t-per">Persona</span></div><div class="esp">Te pide una foto y te pasa con una persona.</div></div></li>
+        <li><div><div class="di">"¿sos Clotilda?" o "¿hablo con una persona?"<span class="tag t-per">Persona</span></div><div class="esp">Te dice que es el asistente virtual y te pasa con una persona.</div></div></li>
+        <li><div><div class="di">"¿de dónde son? ¿cuánto sale el envío?"</div><div class="esp">Responde con lo que sabe (Villa María, envíos a todo el país) y sigue atendiendo.</div></div></li>
+      </ol>
+    </section>
+    <section class="card">
+      <h2>Qué tener en cuenta</h2>
+      <ul class="tips">
+        <li><b>Cuando te pasa con un vendedor o una persona, el asistente deja de responder</b> en ese chat. Es lo esperado: desde ahí sigue alguien del equipo. Para seguir probando, abrí otra ventana de incógnito.</li>
+        <li><b>Nunca te va a dar un precio exacto ni un presupuesto.</b> Solo precios "desde" y links. Cotiza el vendedor.</li>
+        <li><b>Si el chat te muestra una charla vieja,</b> es porque no estás en incógnito. Abrí una ventana nueva.</li>
+        <li><b>Si una respuesta no te gusta o tiene un dato mal,</b> sacale captura y mandásela a Paulo, con lo que escribiste antes.</li>
+      </ul>
+    </section>
+  </div>
+</main>
+
+<footer>Rec Láser · Página de prueba del asistente · <a href="../">Lista mayorista</a></footer>
+
+<script>
+  // El widget de GHL se agrega al final de la página: lo movemos al recuadro del centro.
+  (() => {
+    const destino = document.getElementById('chat-centro');
+    const mover = () => {
+      const w = document.querySelector('body > chat-widget');
+      if (!w) return false;
+      destino.appendChild(w);
+      const c = document.getElementById('cargando'); if (c) c.remove();
+      return true;
+    };
+    if (!mover()) {
+      const obs = new MutationObserver(() => { if (mover()) obs.disconnect(); });
+      obs.observe(document.body, { childList: true });
+    }
+  })();
+</script>
+<script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6ad56b9b4e3a6a8f9586612f"></script>
+</body>
+</html>
