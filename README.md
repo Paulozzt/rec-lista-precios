@@ -1,6 +1,6 @@
 # REC · Lista de precios
 
-Web estática (sin build) con la lista de precios **mayorista** de bases (Bronce, Plata, Oro). No publica precios minoristas. Hoy tiene **datos de prueba**.
+Web estática (sin build) con la lista de precios **mayorista** de bases (Bronce, Plata, Oro). No publica precios minoristas. Precios reales cargados el 25/10/2026 desde "Lista de precios REC" (los mismos del cotizador).
 
 - `index.html`: la página.
 - `data/config.json`: textos, formas, niveles y contacto (WhatsApp, tienda, Instagram). Se edita a mano.

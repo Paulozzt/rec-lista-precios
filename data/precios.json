@@ -1,222 +1,222 @@
 {
- "actualizado": "2026-10-20",
- "mock": true,
+ "actualizado": "2026-10-25",
+ "mock": false,
  "medidas": [
   {
    "cm": 10,
-   "bronce": 460,
-   "plata": 400,
-   "oro": 360
+   "bronce": 612,
+   "plata": 499,
+   "oro": 442
   },
   {
    "cm": 11,
-   "bronce": 490,
-   "plata": 420,
-   "oro": 380
+   "bronce": 627,
+   "plata": 509,
+   "oro": 448
   },
   {
    "cm": 12,
-   "bronce": 520,
-   "plata": 440,
-   "oro": 400
+   "bronce": 670,
+   "plata": 563,
+   "oro": 494
   },
   {
    "cm": 13,
-   "bronce": 550,
-   "plata": 470,
-   "oro": 420
+   "bronce": 736,
+   "plata": 608,
+   "oro": 537
   },
   {
    "cm": 14,
-   "bronce": 580,
-   "plata": 500,
-   "oro": 450
+   "bronce": 777,
+   "plata": 650,
+   "oro": 574
   },
   {
    "cm": 15,
-   "bronce": 630,
-   "plata": 540,
-   "oro": 480
+   "bronce": 821,
+   "plata": 663,
+   "oro": 583
   },
   {
    "cm": 16,
-   "bronce": 670,
-   "plata": 580,
-   "oro": 510
+   "bronce": 861,
+   "plata": 704,
+   "oro": 622
   },
   {
    "cm": 17,
-   "bronce": 710,
-   "plata": 610,
-   "oro": 550
+   "bronce": 936,
+   "plata": 763,
+   "oro": 670
   },
   {
    "cm": 18,
-   "bronce": 760,
-   "plata": 650,
-   "oro": 580
+   "bronce": 1095,
+   "plata": 847,
+   "oro": 746
   },
   {
    "cm": 19,
-   "bronce": 810,
-   "plata": 700,
-   "oro": 620
+   "bronce": 1136,
+   "plata": 878,
+   "oro": 772
   },
   {
    "cm": 20,
-   "bronce": 860,
-   "plata": 740,
-   "oro": 660
+   "bronce": 1142,
+   "plata": 878,
+   "oro": 772
   },
   {
    "cm": 21,
-   "bronce": 910,
-   "plata": 780,
-   "oro": 700
+   "bronce": 1148,
+   "plata": 935,
+   "oro": 822
   },
   {
    "cm": 22,
-   "bronce": 970,
-   "plata": 840,
-   "oro": 750
+   "bronce": 1209,
+   "plata": 980,
+   "oro": 864
   },
   {
    "cm": 23,
-   "bronce": 1030,
-   "plata": 890,
-   "oro": 790
+   "bronce": 1255,
+   "plata": 1020,
+   "oro": 897
   },
   {
    "cm": 24,
-   "bronce": 1090,
-   "plata": 940,
-   "oro": 840
+   "bronce": 1315,
+   "plata": 1067,
+   "oro": 938
   },
   {
    "cm": 25,
-   "bronce": 1160,
-   "plata": 1000,
-   "oro": 890
+   "bronce": 1395,
+   "plata": 1131,
+   "oro": 999
   },
   {
    "cm": 26,
-   "bronce": 1230,
-   "plata": 1060,
-   "oro": 940
+   "bronce": 1525,
+   "plata": 1240,
+   "oro": 1089
   },
   {
    "cm": 27,
-   "bronce": 1300,
-   "plata": 1120,
-   "oro": 1000
+   "bronce": 1655,
+   "plata": 1338,
+   "oro": 1181
   },
   {
    "cm": 28,
-   "bronce": 1380,
-   "plata": 1180,
-   "oro": 1060
+   "bronce": 1740,
+   "plata": 1405,
+   "oro": 1242
   },
   {
    "cm": 29,
-   "bronce": 1440,
-   "plata": 1240,
-   "oro": 1110
+   "bronce": 1888,
+   "plata": 1523,
+   "oro": 1341
   },
   {
    "cm": 30,
-   "bronce": 1530,
-   "plata": 1320,
-   "oro": 1170
+   "bronce": 2007,
+   "plata": 1625,
+   "oro": 1432
   },
   {
    "cm": 31,
-   "bronce": 1610,
-   "plata": 1380,
-   "oro": 1230
+   "bronce": 2320,
+   "plata": 1880,
+   "oro": 1653
   },
   {
    "cm": 32,
-   "bronce": 1690,
-   "plata": 1460,
-   "oro": 1300
+   "bronce": 2500,
+   "plata": 2021,
+   "oro": 1778
   },
   {
    "cm": 33,
-   "bronce": 1780,
-   "plata": 1530,
-   "oro": 1370
+   "bronce": 2647,
+   "plata": 2137,
+   "oro": 1882
   },
   {
    "cm": 34,
-   "bronce": 1870,
-   "plata": 1610,
-   "oro": 1430
+   "bronce": 2776,
+   "plata": 2248,
+   "oro": 1978
   },
   {
    "cm": 35,
-   "bronce": 1960,
-   "plata": 1690,
-   "oro": 1500
+   "bronce": 2943,
+   "plata": 2380,
+   "oro": 2094
   },
   {
    "cm": 36,
-   "bronce": 2060,
-   "plata": 1770,
-   "oro": 1580
+   "bronce": 3115,
+   "plata": 2519,
+   "oro": 2215
   },
   {
    "cm": 37,
-   "bronce": 2150,
-   "plata": 1850,
-   "oro": 1650
+   "bronce": 3275,
+   "plata": 2649,
+   "oro": 2329
   },
   {
    "cm": 38,
-   "bronce": 2250,
-   "plata": 1940,
-   "oro": 1730
+   "bronce": 3462,
+   "plata": 2794,
+   "oro": 2461
   },
   {
    "cm": 39,
-   "bronce": 2360,
-   "plata": 2030,
-   "oro": 1810
+   "bronce": 3694,
+   "plata": 2981,
+   "oro": 2624
   },
   {
    "cm": 40,
-   "bronce": 2460,
-   "plata": 2120,
-   "oro": 1890
+   "bronce": 3850,
+   "plata": 3110,
+   "oro": 2739
   },
   {
    "cm": 41,
-   "bronce": 2570,
-   "plata": 2210,
-   "oro": 1970
+   "bronce": 3924,
+   "plata": 3190,
+   "oro": 2807
   },
   {
    "cm": 42,
-   "bronce": 2670,
-   "plata": 2300,
-   "oro": 2050
+   "bronce": 3965,
+   "plata": 3267,
+   "oro": 2876
   },
   {
    "cm": 43,
-   "bronce": 2800,
-   "plata": 2400,
-   "oro": 2140
+   "bronce": 4158,
+   "plata": 3344,
+   "oro": 2943
   },
   {
    "cm": 44,
-   "bronce": 2910,
-   "plata": 2500,
-   "oro": 2230
+   "bronce": 4340,
+   "plata": 3421,
+   "oro": 3011
   },
   {
    "cm": 45,
-   "bronce": 3030,
-   "plata": 2600,
-   "oro": 2320
+   "bronce": 4555,
+   "plata": 3499,
+   "oro": 3081
   }
  ]
 }

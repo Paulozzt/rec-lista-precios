@@ -11,6 +11,11 @@ tienen el mismo precio por medida, alcanza con la primera fila de cada medida.
 Las filas sin medida (notas internas), los packs y las medidas tipo "15 X 22"
 (tablas) se ignoran.
 
+También acepta la hoja PRECIOS de "Lista de precios REC" (la misma que lee el
+cotizador): columnas producto | medida_cm | forma | bronce | plata | oro. Se toman
+las filas con producto "Base" y sin forma (el precio mayorista es el mismo para
+todas las formas).
+
 Uso:  SHEET_CSV_URL="https://docs.google.com/.../pub?gid=...&output=csv" python scripts/actualizar_precios.py
 """
 
@@ -52,9 +57,13 @@ def main():
     medidas = {}
     for fila in csv.DictReader(io.StringIO(texto)):
         fila = {(k or "").strip().upper(): v for k, v in fila.items()}
-        desc = (fila.get("DESCRIPCION") or "").strip().upper()
-        cm = numero(fila.get("TAMAÑO EN CM") or "")
-        if not desc.startswith("BASE") or cm is None or int(cm) in medidas:
+        if "MEDIDA_CM" in fila:  # hoja PRECIOS de "Lista de precios REC"
+            es_base = (fila.get("PRODUCTO") or "").strip().upper() == "BASE" and not (fila.get("FORMA") or "").strip()
+            cm = numero(fila.get("MEDIDA_CM") or "")
+        else:
+            es_base = (fila.get("DESCRIPCION") or "").strip().upper().startswith("BASE")
+            cm = numero(fila.get("TAMAÑO EN CM") or "")
+        if not es_base or cm is None or int(cm) in medidas:
             continue
         precios = {n: numero(fila.get(n.upper()) or "") for n in NIVELES}
         if any(v is not None for v in precios.values()):
